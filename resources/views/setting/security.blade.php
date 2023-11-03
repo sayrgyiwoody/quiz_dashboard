@@ -41,7 +41,7 @@
                     <p class=" text-red-600 text-sm mt-2">{{$message}}</p>
                 @enderror
             </div>
-            <a class="text-blue-500 hover:text-blue-600 duration-100">Forgotten your password?</a>
+            <a href="{{route('admin.password.request')}}" class="text-blue-500 hover:text-blue-600 duration-100">Forgotten your password?</a>
             <button type="submit" class="font-medium flex items-center mt-2 float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-zinc-700 dark:hover:bg-zinc-600 focus:outline-none dark:focus:ring-blue-800">Change Password</button>
 
         </form>

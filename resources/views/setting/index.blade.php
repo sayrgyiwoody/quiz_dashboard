@@ -105,13 +105,21 @@ themeToggleBtn.addEventListener('click', function() {
 
 @if (session('alert'))
 
+if(localStorage.getItem('color-theme') === 'dark') {
+    var textColor = '#ffffff';
+    var bgColor = '#3f3f46';
+}else {
+    var textColor = '#18181b';
+    var bgColor = '#ffffff';
+}
+
 Swal.fire({
     position: 'center',
     icon: 'success',
     text:  '{{ session('alert') }}',
     showConfirmButton: true,
-    color: '#ffffff',
-    background: '#3f3f46',
+    color: `${textColor}`,
+    background: `${bgColor}`,
 })
 
 @endif

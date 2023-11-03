@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminAccountController;
 use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +25,13 @@ Route::get('/register',function(){
     return redirect()->back();
 });
 
+Route::post('password/forgot',[ForgotPasswordController::class,'sendResetLink'])->name('forgot.password.link');
+Route::get('password/reset/{token}',[ForgotPasswordController::class,'showResetForm'])->name('reset.password.form');
+Route::post('password/reset',[ForgotPasswordController::class,'resetPassword'])->name('reset.password');
 
 
 
 Route::middleware(['auth'])->group(function () {
-
-
-
 
     Route::group(['prefix'=>'admin','middleware'=>['admin_auth']],function(){
         Route::get('/dashboard',[AdminDashboardController::class,'dashboard'])->name('admin.dashboard');
@@ -42,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/security',[AdminSettingController::class,'security'])->name('admin.setting.security');
             Route::post('/security/changePassword',[AdminAccountController::class,'changePassword'])->name('admin.update.password');
             Route::post('/security/deleteAccount',[AdminAccountController::class,'deleteAccount'])->name('admin.delete.account');
+            Route::get('/password/forgot',[ForgotPasswordController::class,'passwordRequestPage'])->name('admin.password.request');
         });
 
 
@@ -55,3 +57,4 @@ Route::middleware(['auth'])->group(function () {
     });
 
 });
+
