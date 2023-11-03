@@ -27,7 +27,7 @@ Route::get('/register',function(){
 
 
 
-Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
 
 
@@ -39,6 +39,9 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
             Route::get('/',[AdminSettingController::class,'setting'])->name('admin.setting');
             Route::get('/profile',[AdminSettingController::class,'profile'])->name('admin.setting.profile');
             Route::post('/profile/update',[AdminAccountController::class,'updateAccount'])->name('admin.update.account');
+            Route::get('/security',[AdminSettingController::class,'security'])->name('admin.setting.security');
+            Route::post('/security/changePassword',[AdminAccountController::class,'changePassword'])->name('admin.update.password');
+            Route::post('/security/deleteAccount',[AdminAccountController::class,'deleteAccount'])->name('admin.delete.account');
         });
 
 

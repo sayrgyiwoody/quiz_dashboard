@@ -13,4 +13,8 @@ class AdminSettingController extends Controller
     public function profile () {
         return view('setting.profile');
     }
+
+    public function security () {
+        return view('setting.security');
+    }
 }

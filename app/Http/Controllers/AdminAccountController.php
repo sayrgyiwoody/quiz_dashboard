@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
@@ -31,7 +32,7 @@ class AdminAccountController extends Controller
             $request->file('image')->storeAs('public/',$imageName);
         }
         User::where('id',Auth::user()->id)->update($data);
-        return redirect()->route('admin.setting')->with(['updateAlert' => 'Admin information updated.']);
+        return redirect()->route('admin.setting')->with(['alert' => 'Your personal information is updated successfully.']);
 
 
     }
@@ -80,5 +81,42 @@ class AdminAccountController extends Controller
             'number' => $request->number,
             'address' => $request->address,
         ];
+    }
+
+    //Change new password
+    public function changePassword(Request $request) {
+        $this->passwordValidationCheck($request);
+        $dbHashPassword = Auth::user()->password;
+        if(Hash::check($request->oldPassword, $dbHashPassword)) {
+            $newPassword = hash::make($request->newPassword);
+            $user = User::where('id',Auth::user()->id)->update([
+                'password' => $newPassword
+            ]);
+            return redirect()->route('admin.setting')->with(['alert'=>'Your account password is changed successfully']);
+
+        }else {
+            return redirect()->back()->withErrors(['oldPassword' => 'Incorrect old password']);
+        }
+
+    }
+
+    //check password validation
+    private function passwordValidationCheck($request) {
+        Validator::make($request->all(),[
+            'oldPassword' => 'required|min:8',
+            'newPassword' => 'required|min:8',
+            'confirmPassword' => 'required|min:8|same:newPassword'
+        ])->validate();
+    }
+
+    // delete account
+    public function deleteAccount(){
+        $dbImage = User::select('profile_photo_path')->where('id',Auth::user()->id)->first();
+            $dbImage =$dbImage->profile_photo_path;
+            if($dbImage!=null) {
+                Storage::delete('public/'.$dbImage);
+            }
+        User::where('id',Auth::user()->id)->delete();
+        return response()->json(200);
     }
 }

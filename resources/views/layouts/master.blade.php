@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
         <title>Laravel</title>
 
@@ -12,6 +14,13 @@
 
          {{-- jquery cdn  --}}
          <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+         {{-- font awesome cdn  --}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        {{-- sweet alert 2 cdn  --}}
+        <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
         <!-- Styles -->
         <style>
@@ -103,7 +112,7 @@
 
  </aside>
 
- <div class="p-4 min-h-screen bg-gray-100 dark:bg-zinc-900 sm:ml-64">
+ <div class="relative p-2 min-h-screen bg-gray-100 dark:bg-zinc-900 sm:ml-64">
     <div class="md:p-4 rounded-lg ">
         @yield('main-content')
     </div>
@@ -113,42 +122,36 @@
  </script>
  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
  <script>
-    var themeToggleBtn = document.getElementById('theme-toggle');
 
 
     if (localStorage.getItem('color-theme')) {
         if (localStorage.getItem('color-theme') === 'dark') {
             document.documentElement.classList.add('dark');
-            themeToggleBtn.checked = true;
+
         } else {
             document.documentElement.classList.remove('dark');
         }
     }
 
-    themeToggleBtn.addEventListener('click', function() {
 
-        // if set via local storage previously
-        if (localStorage.getItem('color-theme')) {
-            if (localStorage.getItem('color-theme') === 'light') {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('color-theme', 'dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('color-theme', 'light');
-            }
 
-        // if NOT set via local storage previously
-        } else {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('color-theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('color-theme', 'dark');
-            }
-        }
-
-    });
  </script>
+ <script>
+            $(document).ready(function(){
+                $('.eye-icon').click(function(){
+                    $parentNode = $(this).parents('.input-gp');
+                    $pwType = $parentNode.find('input').attr('type');
+
+                    if($pwType == "password"){
+                        $(this).removeClass('fa-eye').addClass('fa-eye-slash');
+                        $parentNode.find('input').attr('type','text');
+                    }else if($pwType == "text"){
+                        $(this).removeClass('fa-eye-slash').addClass('fa-eye');
+                        $parentNode.find('input').attr('type','password');
+                    }
+
+                })
+            })
+    </script>
     </body>
 </html>

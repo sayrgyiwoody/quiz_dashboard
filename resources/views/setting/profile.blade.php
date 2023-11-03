@@ -14,7 +14,7 @@
         <div class="grid md:grid-cols-2 md:space-x-4">
             <div>
                 @if (Auth::user()->profile_photo_path === null)
-                    <img id="profile-image" class=" w-full h-60 rounded-md" src="https://ui-avatars.com/api/?background=2563eb&color=ffffff&name={{Auth::user()->name}}" alt="">
+                    <img id="profile-image" class=" w-full h-60 object-cover rounded-md" src="https://ui-avatars.com/api/?background=2563eb&color=ffffff&name={{Auth::user()->name}}" alt="">
                 @else
                 <img id="profile-image" class=" w-full h-60 object-cover rounded-md" src="{{asset('storage/'.Auth::user()->profile_photo_path)}}" alt="">
                 @endif
