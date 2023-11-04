@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<div class="flex items-center justify-center">
+<div class="flex items-center justify-center animate__animated animate__bounceIn">
 
     <div class="w-full md:w-2/3 mt-6 ">
 

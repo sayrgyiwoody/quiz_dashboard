@@ -65,4 +65,31 @@ class CategoryController extends Controller
         Category::where('id',$request->id)->delete();
         return back()->with(['alert'=>'Category deleted successfully.']);
     }
+
+    // get edit info
+    public function editInfo(Request $request){
+        $category = Category::where('id',$request->id)->first();
+        return response()->json([
+            'category' => $category
+        ],200);
+    }
+
+    //update category
+    public function edit(Request $request) {
+        $this->categoryValidationCheck($request,$request->id);
+        $data = $this->categoryGetData($request);
+        //image check
+        if($request->hasFile('categoryImage')) {
+            $dbImage = Category::select('image')->where('id',$request->id)->first();
+            $dbImage = $dbImage->image;
+            if($dbImage!=null) {
+                Storage::delete('public/categoryImages/'.$dbImage);
+            }
+            $imageName = uniqid() . '_' . $request->file('categoryImage')->getClientOriginalName();
+            $data['image'] = $imageName;
+            $request->file('categoryImage')->storeAs('public/categoryImages/',$imageName);
+        }
+        Category::where('id',$request->id)->update($data);
+        return redirect()->back()->with(['alert'=>'Category updated successfully.']);
+    }
 }

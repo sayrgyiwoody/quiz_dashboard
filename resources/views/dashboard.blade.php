@@ -2,7 +2,7 @@
 
 @section('main-content')
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-    <div class="flex items-center justify-center  rounded ">
+    <div class="animate__animated animate__bounceIn flex items-center justify-center  rounded ">
         <div class=" w-full bg-white dark:bg-zinc-800 rounded-lg shadow  p-4 md:p-6">
             <div class="flex justify-between">
               <div>
@@ -64,7 +64,7 @@
             </div>
           </div>
     </div>
-    <div class="flex items-center justify-center rounded ">
+    <div class="animate__animated animate__bounceIn flex items-center justify-center rounded ">
         <div class="w-full  rounded-lg shadow bg-white dark:bg-zinc-800 p-4 md:p-6">
 
             <div class="flex justify-between items-start w-full">
@@ -87,7 +87,7 @@
                       <div data-popper-arrow></div>
                   </div>
                 </div>
-                
+
               </div>
               <div class="flex justify-end items-center">
                 <button id="widgetDropdownButton" data-dropdown-toggle="widgetDropdown" data-dropdown-placement="bottom" type="button"  class="inline-flex items-center justify-center text-gray-500 w-8 h-8 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm"><svg class="w-3.5 h-3.5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">

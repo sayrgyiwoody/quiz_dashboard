@@ -36,6 +36,8 @@
 
 
         </style>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     </head>
     <body class="antialiased bg-white dark:bg-zinc-800 shadow-sm">
 

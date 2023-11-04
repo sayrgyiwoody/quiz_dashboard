@@ -64,7 +64,7 @@
   <div id="default-modal" tabindex="-1" aria-hidden="true" style="background-color:#27272aa8;" class="absolute  top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
       <div class="relative w-full max-w-2xl max-h-full flex justify-center items-center">
           <!-- Modal content -->
-          <div class="relative w-full md:w-2/3 bg-white rounded-lg shadow dark:bg-zinc-700">
+          <div class="animate__animated animate__bounceIn relative w-full md:w-2/3 bg-white rounded-lg shadow dark:bg-zinc-700">
               <!-- Modal header -->
               <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                   <h3 class="text-xl font-semibold text-gray-900 dark:text-white">

@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<div class="flex mt-6 flex-col items-center justify-center">
+<div class="flex mt-6 flex-col items-center justify-center animate__animated animate__fadeIn">
     <a href="{{route('admin.setting')}}" class="w-full md:w-2/3 flex items-center text-zinc-900 dark:text-slate-100 dark:hover:text-primary hover:text-primary duration-150">
         <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m-3.29 13.59L14.29 18l-6-6l6-6l1.42 1.41L11.12 12l4.59 4.59Z"/></svg>Back
     </a>
