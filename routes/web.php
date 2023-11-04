@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminAccountController;
 use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\AdminDashboardController;
@@ -44,6 +45,14 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/security/changePassword',[AdminAccountController::class,'changePassword'])->name('admin.update.password');
             Route::post('/security/deleteAccount',[AdminAccountController::class,'deleteAccount'])->name('admin.delete.account');
             Route::get('/password/forgot',[ForgotPasswordController::class,'passwordRequestPage'])->name('admin.password.request');
+        });
+
+        Route::group(['prefix'=>'category'],function(){
+            Route::get('/',[CategoryController::class,'list'])->name('category.list');
+            Route::post('create',[CategoryController::class,'create'])->name('category.create');
+            Route::post('delete',[CategoryController::class,'delete'])->name('category.delete');
+
+
         });
 
 

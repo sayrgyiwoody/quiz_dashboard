@@ -3,16 +3,16 @@
 @section('main-content')
 
 <div class="flex mt-6 flex-col items-center justify-center">
-    <a href="{{route('admin.setting')}}" class="w-full md:w-2/4 flex items-center text-zinc-900 dark:text-slate-100 dark:hover:text-primary hover:text-primary duration-150">
+    <a href="{{route('admin.setting')}}" class="w-full md:w-2/3 flex items-center text-zinc-900 dark:text-slate-100 dark:hover:text-primary hover:text-primary duration-150">
         <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m-3.29 13.59L14.29 18l-6-6l6-6l1.42 1.41L11.12 12l4.59 4.59Z"/></svg>Back
     </a>
-    <form method="POST" action="{{route('admin.update.account')}}" enctype="multipart/form-data" class="w-full mt-4 p-6 md:p-7 md:w-2/4 bg-white dark:bg-zinc-800 shadow-sm rounded">
+    <form method="POST" action="{{route('admin.update.account')}}" enctype="multipart/form-data" class="w-full mt-4 p-6 md:p-7 md:w-2/3 bg-white dark:bg-zinc-800 shadow-sm rounded">
         @csrf
         <h4 class="text-center text-zinc-800 text-2xl font-semibold text-zinc-900 dark:text-white">Personal Info</h4>
         <p class="text-center text-zinc-600 dark:text-muted font-medium mb-4">Update your own personal informations</p>
         <hr class="mb-6  bg-zinc-900 h-[1.6px]">
-        <div class="grid md:grid-cols-2 md:space-x-6">
-            <div>
+        <div class="grid md:grid-cols-3 md:space-x-6">
+            <div class="">
                 @if (Auth::user()->profile_photo_path === null)
                     <img id="profile-image" class=" w-full h-60 object-cover rounded-md" src="https://ui-avatars.com/api/?background=2563eb&color=ffffff&name={{Auth::user()->name}}" alt="">
                 @else
@@ -52,7 +52,7 @@
                     </div>
                 </div>
             </div>
-            <div class="">
+            <div class=" col-span-2">
 
                 <div class="relative z-0 w-full mb-6 group mt-4">
                     <input name="name" value="{{old('name',Auth::user()->name)}}" type="text" class="@error('email') border-red-600 dark:border-red-600 @else border-slate-300 dark:border-zinc-700 @enderror dark:text-white px-3 relative block py-3 w-full text-sm text-gray-900 bg-transparent appearance-none  border-[1.5px]  rounded-md dark:focus:border-blue-500 -z-0 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />

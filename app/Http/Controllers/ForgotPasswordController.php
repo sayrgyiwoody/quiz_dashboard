@@ -36,8 +36,8 @@ class ForgotPasswordController extends Controller
         ". You can reset your password by clicking the link below";
 
         Mail::send('email-forgot',['action_link'=>$action_link,'body'=>$body],function($message) use ($request){
-            $message->from('test@gmail.com','admin');
-            $message->to($request->email,'admin')
+            $message->from('test@gmail.com','quiz app');
+            $message->to($request->email,'quiz app')
                     ->subject('Reset Password');
         });
 
