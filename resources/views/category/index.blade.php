@@ -76,9 +76,9 @@
     </div>
     <div class=" overflow-x-scroll md:overflow-hidden md:col-span-3 rounded">
 
-    <div class=" w-full animate__animated animate__bounceIn relative shadow-md sm:rounded-lg">
-        <div class=" flex items-center justify-between py-4 px-6 bg-white dark:bg-zinc-800">
-            <div>
+    <div class=" w-full shadow-md sm:rounded-lg">
+        <div class=" flex flex-col md:flex-row md:items-center  justify-center md:justify-between py-4 px-6 bg-white dark:bg-zinc-800">
+            <div class="flex">
                 <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction" class="inline-flex items-center text-zinc-500 bg-white border border-zinc-300 focus:outline-none hover:bg-zinc-100 focus:ring-4 focus:ring-zinc-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-600 dark:hover:bg-zinc-700 dark:hover:border-zinc-600 dark:focus:ring-zinc-700" type="button">
                     <span class="sr-only">Action button</span>
                     Filter<svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M6 13h12v-2H6M3 6v2h18V6M10 18h4v-2h-4v2Z"/></svg>
@@ -107,26 +107,26 @@
                             <form action="{{route('category.list')}}" method="GET">
                                 <input type="hidden" name="filterStatus" value="AZ">
                                 <button class="flex items-center w-full text-start px-4 py-2 hover:bg-zinc-100 hover:text-zinc-800 dark:hover:bg-zinc-600 dark:hover:text-white">Alphabetical
-                                    <svg class="inline-block ms-2" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="m15.75 19l-3.25 3.25L9.25 19h6.5m-6.86-4.7H6L5.28 17H2.91L6 7h3l3.13 10H9.67l-.78-2.7m-2.56-1.62h2.23l-.63-2.12l-.26-.97l-.25-.96h-.03l-.22.97l-.24.98l-.6 2.1M13.05 17v-1.26l4.75-6.77v-.06h-4.3V7h7.23v1.34L16.09 15v.08h4.71V17h-7.75Z"/></svg>
+                                        <svg class="inline-block ms-2" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="m15.75 19l-3.25 3.25L9.25 19h6.5m-6.86-4.7H6L5.28 17H2.91L6 7h3l3.13 10H9.67l-.78-2.7m-2.56-1.62h2.23l-.63-2.12l-.26-.97l-.25-.96h-.03l-.22.97l-.24.98l-.6 2.1M13.05 17v-1.26l4.75-6.77v-.06h-4.3V7h7.23v1.34L16.09 15v.08h4.71V17h-7.75Z"/></svg>
                                 </form>
                         </li>
                     </ul>
 
                 </div>
-            </div>
-            <div class="border-[1.5px] dark:border-zinc-700 px-3 py-2 rounded dark:text-white">
-                Total : <span class=" font-semibold text-primary">{{$category->total()}}</span>
-            </div>
-            <form action="{{route('category.list')}}" method="GET">
-                <label for="table-search" class="sr-only">Search</label>
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-zinc-500 dark:text-zinc-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                        </svg>
-                    </div>
-                    <input name="searchKey" value="{{request('searchKey')}}" type="text" class="block p-2 pl-10 text-sm text-zinc-900 border border-zinc-300 rounded-lg w-80 bg-zinc-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for categories">
+                <div class="ms-4 md:ms-8 w-fit border-[1.5px] dark:border-zinc-700 px-3 py-2 m-0 rounded dark:text-white">
+                    Total : <span class=" font-semibold text-primary">{{$category->total()}}</span>
                 </div>
+            </div>
+
+
+            <form class="mt-3 md:mt-0 relative" action="{{route('category.list')}}" method="GET">
+
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-zinc-500 dark:text-zinc-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                </div>
+                <input type="text" name="searchKey" value="{{request('searchKey')}}" class="block p-2 pl-10 text-sm text-zinc-900 border border-zinc-300 rounded-lg w-80 bg-zinc-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for categories">
             </form>
         </div>
         @if ($category->total() != 0)
@@ -152,7 +152,7 @@
                 @foreach ($category as $c)
                 <tr class="text-zinc-800 dark:text-slate-100 bg-white border-b dark:bg-zinc-800 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-600">
 
-                    <td class="flex items-center  px-6 py-4 text-zinc-900 whitespace-nowrap dark:text-white">
+                    <td class="flex items-center py-2 md:px-6 md:py-4 text-zinc-900 whitespace-nowrap dark:text-white">
                         @if ($c->image != null)
                             <img class=" w-36  h-24 object-cover bg-slate-50 dark:bg-[#242425] border-2 dark:border-zinc-700 rounded-md" src="{{asset('storage/categoryImages/'.$c->image)}}" alt="category image">
                         @else
@@ -179,8 +179,8 @@
                                 </div>
                                 <svg data-popover-target="popover-edit" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-2.3 6.35c.22-.21.22-.56 0-.77L15.42 7.3a.532.532 0 0 0-.77 0l-1 1l2.05 2.05l1-1M7 14.94V17h2.06l6.06-6.06l-2.06-2.06L7 14.94Z"/></svg>
                             </button>
-                            <form action="{{route('category.delete')}}" method="POST" class="ms-2">
-                                @csrf
+
+                            <button data-modal-target="default-modal" data-modal-toggle="default-modal" type="button" class="ms-1">
                                 <div data-popover id="popover-delete" role="tooltip" class="absolute z-10 invisible inline-block text-sm text-zinc-500 transition-opacity duration-300 bg-white border border-zinc-200 rounded-lg shadow-sm opacity-0 dark:text-zinc-400 dark:border-zinc-600 dark:bg-zinc-800">
                                     <div class="px-3 py-2 bg-zinc-100 border-b border-zinc-200 rounded-t-lg dark:border-zinc-600 dark:bg-zinc-900">
                                         <h3 class="font-semibold text-red-600">Delete</h3>
@@ -190,11 +190,44 @@
                                     </div>
                                     <div data-popper-arrow></div>
                                 </div>
-                                <input type="hidden" name="id" value="{{$c->id}}">
-                                <button type="submit" class="mt-1">
-                                    <svg data-popover-target="popover-delete" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12S6.47 2 12 2m5 5h-2.5l-1-1h-3l-1 1H7v2h10V7M9 18h6a1 1 0 0 0 1-1v-7H8v7a1 1 0 0 0 1 1Z"/></svg>
-                                </button>
-                            </form>
+                                <svg data-popover-target="popover-delete" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12S6.47 2 12 2m5 5h-2.5l-1-1h-3l-1 1H7v2h10V7M9 18h6a1 1 0 0 0 1-1v-7H8v7a1 1 0 0 0 1 1Z"/></svg>
+                            </button>
+                            <!-- Main modal -->
+                            <div id="default-modal" tabindex="-1" aria-hidden="true" style="background-color:#27272aa8;" class="absolute  top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                <div class="relative w-full max-w-2xl max-h-full flex justify-center items-center">
+                                    <!-- Modal content -->
+                                    <div class="animate__animated animate__bounceIn relative w-full md:w-2/3 bg-white rounded-lg shadow dark:bg-zinc-700">
+                                        <!-- Modal header -->
+                                        <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                Are you sure ?
+                                            </h3>
+                                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                </svg>
+                                                <span class="sr-only">Close modal</span>
+                                            </button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="p-6 space-y-6">
+                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                            You won't be able to revert this. This category will be deleted forever.
+                                        </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                        <form action="{{route('category.delete')}}" method="POST" class="flex justify-center items-center">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{$c->id}}">
+                                            <button  type="submit" class="text-lg px-5 py-2.5 flex items-center justify-center mt-2 font-medium text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-blue-300  rounded-lg mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-blue-800">Delete Category</button>
+                                        </form>
+                                            <button data-modal-hide="default-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </td>
 

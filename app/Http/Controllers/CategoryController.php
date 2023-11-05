@@ -42,7 +42,7 @@ class CategoryController extends Controller
     private function categoryValidationCheck($request,$id = 0){
         Validator::make($request->all(),[
             'categoryName' => 'required|unique:categories,name,'. $id,
-            'categoryImage' => 'required|mimes:png,jpg,jpeg,JPEG,webp|file',
+            'categoryImage' => 'mimes:png,jpg,jpeg,JPEG,webp|file',
 
         ])->validate();
     }
@@ -51,7 +51,7 @@ class CategoryController extends Controller
      private function categoryGetData($request) {
         return [
             'name' => $request->categoryName,
-            'image' => null,
+            
         ];
     }
 
