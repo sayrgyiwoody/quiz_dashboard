@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminAccountController;
 use App\Http\Controllers\AdminSettingController;
@@ -53,7 +54,14 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/delete',[CategoryController::class,'delete'])->name('category.delete');
             Route::post('/editInfo',[CategoryController::class,'editInfo'])->name('category.editInfo');
             Route::post('edit',[CategoryController::class,'edit'])->name('category.edit');
+        });
 
+        Route::group(['prefix'=> 'accounts'],function(){
+            Route::get('adminList',[AccountsController::class,'adminList'])->name('accounts.admin.list');
+            Route::get('userList',[AccountsController::class,'userList'])->name('accounts.user.list');
+            Route::get('userList',[AccountsController::class,'userList'])->name('accounts.user.list');
+            Route::post('changeRole',[AccountsController::class,'changeRole'])->name('accounts.changeRole');
+            Route::post('delete',[AccountsController::class,'delete'])->name('accounts.delete');
         });
 
 

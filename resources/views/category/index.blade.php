@@ -113,7 +113,7 @@
                     </ul>
 
                 </div>
-                <div class="ms-4 md:ms-8 w-fit border-[1.5px] dark:border-zinc-700 px-3 py-2 m-0 rounded dark:text-white">
+                <div class="text-zinc-900 ms-4 md:ms-8 w-fit border-[1.5px] dark:border-zinc-700 px-3 py-2 m-0 rounded dark:text-white">
                     Total : <span class=" font-semibold text-primary">{{$category->total()}}</span>
                 </div>
             </div>
@@ -134,6 +134,9 @@
             <thead class="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-white">
                 <tr>
                     <th scope="col" class="px-6 py-3">
+                        Id
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Image
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -151,7 +154,9 @@
 
                 @foreach ($category as $c)
                 <tr class="text-zinc-800 dark:text-slate-100 bg-white border-b dark:bg-zinc-800 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-600">
-
+                    <td id="cId" class="px-6 py-4">
+                        {{$c->id}}
+                    </td>
                     <td class="flex items-center py-2 md:px-6 md:py-4 text-zinc-900 whitespace-nowrap dark:text-white">
                         @if ($c->image != null)
                             <img class=" w-36  h-24 object-cover bg-slate-50 dark:bg-[#242425] border-2 dark:border-zinc-700 rounded-md" src="{{asset('storage/categoryImages/'.$c->image)}}" alt="category image">
@@ -165,6 +170,7 @@
                     <td class="px-6 py-4">
                         {{$c->created_at->format('d M Y')}}
                     </td>
+
                     <td class="px-6 py-4">
                         <div class="flex items-center">
                             <button data-id="{{$c->id}}" class="btn-edit">
@@ -180,7 +186,7 @@
                                 <svg data-popover-target="popover-edit" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-2.3 6.35c.22-.21.22-.56 0-.77L15.42 7.3a.532.532 0 0 0-.77 0l-1 1l2.05 2.05l1-1M7 14.94V17h2.06l6.06-6.06l-2.06-2.06L7 14.94Z"/></svg>
                             </button>
 
-                            <button data-modal-target="default-modal" data-modal-toggle="default-modal" type="button" class="ms-1">
+                            <button class="btn-delete" data-modal-target="default-modal" data-modal-toggle="default-modal" type="button" class="ms-1">
                                 <div data-popover id="popover-delete" role="tooltip" class="absolute z-10 invisible inline-block text-sm text-zinc-500 transition-opacity duration-300 bg-white border border-zinc-200 rounded-lg shadow-sm opacity-0 dark:text-zinc-400 dark:border-zinc-600 dark:bg-zinc-800">
                                     <div class="px-3 py-2 bg-zinc-100 border-b border-zinc-200 rounded-t-lg dark:border-zinc-600 dark:bg-zinc-900">
                                         <h3 class="font-semibold text-red-600">Delete</h3>
@@ -217,11 +223,12 @@
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                        <form action="{{route('category.delete')}}" method="POST" class="flex justify-center items-center">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{$c->id}}">
-                                            <button  type="submit" class="text-lg px-5 py-2.5 flex items-center justify-center mt-2 font-medium text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-blue-300  rounded-lg mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-blue-800">Delete Category</button>
-                                        </form>
+                                            <form action="{{route('category.delete')}}" method="POST">
+                                                @csrf
+                                                <input class="category_id" type="hidden" name="id" value="">
+                                                <button  type="submit" class="text-lg px-5 py-2.5 flex items-center justify-center mt-2 font-medium text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-blue-300  rounded-lg mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-blue-800">Delete Category</button>
+
+                                            </form>
                                             <button data-modal-hide="default-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
                                         </div>
                                     </div>
@@ -236,7 +243,7 @@
             </tbody>
         </table>
         @else
-        <h4 class="px-4 py-3 flex items-center dark:bg-zinc-700 dark:text-white">
+        <h4 class="px-4 py-3 flex items-center text-zinc-900 bg-slate-50 dark:bg-zinc-700 dark:text-white">
             <svg class="inline-block me-2 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11 17h2v-6h-2v6Zm1-8q.425 0 .713-.288T13 8q0-.425-.288-.713T12 7q-.425 0-.713.288T11 8q0 .425.288.713T12 9Zm0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22Z"/></svg>
             There's no category to show</h4>
         @endif
@@ -308,6 +315,11 @@ $(document).ready(function() {
                 console.error('Error:', error);
             }
         });
+    })
+
+    $(".btn-delete").click(function(){
+        $parentNode = $(this).parents('tr');
+        $(".category_id").val($parentNode.find("#cId").text());
     })
   });
 
