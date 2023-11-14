@@ -76,8 +76,8 @@
     </div>
     <div class=" overflow-x-scroll md:overflow-hidden md:col-span-3 rounded">
 
-    <div class=" w-full shadow-md sm:rounded-lg">
-        <div class=" flex flex-col md:flex-row md:items-center  justify-center md:justify-between py-4 px-6 bg-white dark:bg-zinc-800">
+    <div class=" sm:rounded-lg">
+        <div class=" flex flex-col md:flex-row md:items-center  justify-center md:justify-between py-4 px-6 md:bg-white md:dark:bg-zinc-800">
             <div class="flex">
                 <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction" class="inline-flex items-center text-zinc-500 bg-white border border-zinc-300 focus:outline-none hover:bg-zinc-100 focus:ring-4 focus:ring-zinc-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-600 dark:hover:bg-zinc-700 dark:hover:border-zinc-600 dark:focus:ring-zinc-700" type="button">
                     <span class="sr-only">Action button</span>
@@ -154,49 +154,32 @@
 
                 @foreach ($category as $c)
                 <tr class="text-zinc-800 dark:text-slate-100 bg-white border-b dark:bg-zinc-800 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-600">
-                    <td id="cId" class="px-6 py-4">
+                    <td scope="col" class="px-6 py-3">
                         {{$c->id}}
                     </td>
-                    <td class="flex items-center py-2 md:px-6 md:py-4 text-zinc-900 whitespace-nowrap dark:text-white">
+                    <td scope="col" class="md:px-6 py-1 md:py-3">
                         @if ($c->image != null)
-                            <img class=" w-36  h-24 object-cover bg-slate-50 dark:bg-[#242425] border-2 dark:border-zinc-700 rounded-md" src="{{asset('storage/categoryImages/'.$c->image)}}" alt="category image">
+                            <img class="h-24 mx-auto  object-contain bg-slate-50 dark:bg-[#242425] border-2 dark:border-zinc-700 rounded-md" src="{{asset('storage/categoryImages/'.$c->image)}}" alt="category image">
                         @else
-                            <img class=" w-36  h-24 object-cover bg-slate-50 dark:bg-[#242425] border-2 dark:border-zinc-700 rounded-md" src="{{asset('images/default.png')}}" alt="category image">
+                            <img class="h-24 mx-auto object-contain bg-slate-50 dark:bg-[#242425] border-2 dark:border-zinc-700 rounded-md" src="{{asset('images/default.png')}}" alt="category image">
                         @endif
                     </td>
-                    <td class="px-6 py-4 font-semibold">
+                    <td scope="col" class="px-6 py-3">
                         {{$c->name}}
                     </td>
-                    <td class="px-6 py-4">
+                    <td scope="col" class="px-6 py-3">
                         {{$c->created_at->format('d M Y')}}
                     </td>
-
-                    <td class="px-6 py-4">
+                    <td scope="col" class="px-6 py-3">
                         <div class="flex items-center">
                             <button data-id="{{$c->id}}" class="btn-edit">
-                                <div data-popover id="popover-edit" role="tooltip" class="absolute z-10 invisible inline-block text-sm text-zinc-500 transition-opacity duration-300 bg-white border border-zinc-200 rounded-lg shadow-sm opacity-0 dark:text-zinc-400 dark:border-zinc-600 dark:bg-zinc-800">
-                                    <div class="px-3 py-2 bg-zinc-100 border-b border-zinc-200 rounded-t-lg dark:border-zinc-600 dark:bg-zinc-900">
-                                        <h3 class="font-semibold text-blue-600">Edit</h3>
-                                    </div>
-                                    <div class="px-3 py-2">
-                                        <p><span class="font-semibold">Edit</span> category information.</p>
-                                    </div>
-                                    <div data-popper-arrow></div>
-                                </div>
-                                <svg data-popover-target="popover-edit" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-2.3 6.35c.22-.21.22-.56 0-.77L15.42 7.3a.532.532 0 0 0-.77 0l-1 1l2.05 2.05l1-1M7 14.94V17h2.06l6.06-6.06l-2.06-2.06L7 14.94Z"/></svg>
+
+                                <svg  xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-2.3 6.35c.22-.21.22-.56 0-.77L15.42 7.3a.532.532 0 0 0-.77 0l-1 1l2.05 2.05l1-1M7 14.94V17h2.06l6.06-6.06l-2.06-2.06L7 14.94Z"/></svg>
                             </button>
 
                             <button class="btn-delete" data-modal-target="default-modal" data-modal-toggle="default-modal" type="button" class="ms-1">
-                                <div data-popover id="popover-delete" role="tooltip" class="absolute z-10 invisible inline-block text-sm text-zinc-500 transition-opacity duration-300 bg-white border border-zinc-200 rounded-lg shadow-sm opacity-0 dark:text-zinc-400 dark:border-zinc-600 dark:bg-zinc-800">
-                                    <div class="px-3 py-2 bg-zinc-100 border-b border-zinc-200 rounded-t-lg dark:border-zinc-600 dark:bg-zinc-900">
-                                        <h3 class="font-semibold text-red-600">Delete</h3>
-                                    </div>
-                                    <div class="px-3 py-2">
-                                        <p><span class="font-semibold">Delete</span> category from table.</p>
-                                    </div>
-                                    <div data-popper-arrow></div>
-                                </div>
-                                <svg data-popover-target="popover-delete" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12S6.47 2 12 2m5 5h-2.5l-1-1h-3l-1 1H7v2h10V7M9 18h6a1 1 0 0 0 1-1v-7H8v7a1 1 0 0 0 1 1Z"/></svg>
+
+                                <svg  xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12S6.47 2 12 2m5 5h-2.5l-1-1h-3l-1 1H7v2h10V7M9 18h6a1 1 0 0 0 1-1v-7H8v7a1 1 0 0 0 1 1Z"/></svg>
                             </button>
                             <!-- Main modal -->
                             <div id="default-modal" tabindex="-1" aria-hidden="true" style="background-color:#27272aa8;" class="absolute  top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -237,8 +220,8 @@
 
                         </div>
                     </td>
-
                 </tr>
+
                 @endforeach
             </tbody>
         </table>

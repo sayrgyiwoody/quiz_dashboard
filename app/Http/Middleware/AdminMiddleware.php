@@ -17,7 +17,8 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user()->role === 'user'){
-            return redirect()->back();
+            Auth::logout();
+            return redirect()->route('login')->with(['message'=>'Login for admin account only']);
         }
         return $next($request);
     }

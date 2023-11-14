@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\User;
+use App\Events\Hello;
+use App\Events\PrivateTest;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\CategoryController;
@@ -74,5 +77,10 @@ Route::middleware(['auth'])->group(function () {
 
     });
 
+});
+
+Route::get('/broadcast',function(){
+    Broadcast(new Hello());
+    return 'event submitted';
 });
 

@@ -1,44 +1,31 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
+use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\UpdateInfoRequest;
 
-class AdminAccountController extends Controller
+class UserAccountController extends Controller
 {
-    //Update account information
-    public function updateAccount(Request $request) {
-
-
-        $this->accountValidationCheck($request);
-
-        $data = $this->getAccountData($request);
-
-        if($request->hasFile('image')) {
-            $dbImage = User::select('profile_photo_path')->where('id',Auth::user()->id)->first();
-            $dbImage =$dbImage->profile_photo_path;
-            if($dbImage!=null) {
-                Storage::delete('public/'.$dbImage);
-            }
-            $imageName = uniqid() . $request->file('image')->getClientOriginalName();
-            $data['profile_photo_path'] = $imageName;
-            $request->file('image')->storeAs('public/',$imageName);
-        }
-        User::where('id',Auth::user()->id)->update($data);
-        return redirect()->route('admin.setting')->with(['alert' => 'Your personal information is updated successfully.']);
-
+    //get profile info
+    public function getProfileInfo(){
+        $user = User::select('name','email','gender','number','address','profile_photo_path')
+        ->where('id',Auth::user()->id)->first();
+        return response()->json(['status'=>true,'user'=>$user], 200);
 
     }
 
-    //Account input validation check
-    private function accountValidationCheck($request) {
+    //get profile info
+    public function updateProfileInfo(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3|max:20',
             'email' => [
@@ -53,6 +40,7 @@ class AdminAccountController extends Controller
             'address' => 'max:100',
         ]);
 
+        // for more secure file upload 
         $validator->after(function ($validator) use ($request) {
             $image = $request->file('image');
 
@@ -67,9 +55,30 @@ class AdminAccountController extends Controller
         });
 
         if ($validator->fails()) {
-            throw new ValidationException($validator);
+            return response()->json(['errors'=>$validator->errors()]);
+        }else {
+            $data = $this->getAccountData($request);
+
+        if($request->hasFile('image')) {
+            $dbImage = User::select('profile_photo_path')->where('id',Auth::user()->id)->first();
+            $dbImage =$dbImage->profile_photo_path;
+            if($dbImage!=null) {
+                Storage::delete('public/'.$dbImage);
+            }
+            $imageName = uniqid() . $request->file('image')->getClientOriginalName();
+            $data['profile_photo_path'] = $imageName;
+            $request->file('image')->storeAs('public/',$imageName);
         }
+
+        User::where('id',Auth::user()->id)->update($data);
+        $user = User::where('id',Auth::user()->id)->get();
+        return response()->json(['userInfo'=>$user ,'status' => 'success','message' => 'Your personal information is updated successfully'], 200);
+        }
+
+
     }
+
+
 
     //get account data as object format
     private function getAccountData($request) {
@@ -84,29 +93,25 @@ class AdminAccountController extends Controller
     }
 
     //Change new password
-    public function changePassword(Request $request) {
-        $this->passwordValidationCheck($request);
+    public function changePassword(ChangePasswordRequest $request) {
+        // $this->passwordValidationCheck($request);
         $dbHashPassword = Auth::user()->password;
         if(Hash::check($request->oldPassword, $dbHashPassword)) {
             $newPassword = hash::make($request->newPassword);
             $user = User::where('id',Auth::user()->id)->update([
                 'password' => $newPassword
             ]);
-            return redirect()->route('admin.setting')->with(['alert'=>'Your account password is changed successfully']);
+            return response()->json(['status' => 'success','message'=>'Password changed successfully'], 200);
 
         }else {
-            return redirect()->back()->withErrors(['oldPassword' => 'Incorrect old password']);
+            return response()->json([
+                'status' => 'fail',
+                'message' => [
+                    'oldPassword' => ['Incorrect old password']
+                ],
+            ],200);
         }
 
-    }
-
-    //check password validation
-    private function passwordValidationCheck($request) {
-        Validator::make($request->all(),[
-            'oldPassword' => 'required|min:8',
-            'newPassword' => 'required|min:8',
-            'confirmPassword' => 'required|min:8|same:newPassword'
-        ])->validate();
     }
 
     // delete account

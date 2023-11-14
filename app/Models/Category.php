@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Quiz;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
@@ -13,4 +14,9 @@ class Category extends Model
         'name',
         'image',
     ];
+
+    public function quizzes()
+    {
+        return $this->hasMany(Quiz::class);
+    }
 }
