@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\Quiz;
 use App\Models\Answer;
 use App\Models\Category;
 use App\Models\Question;
 use App\Models\SavedQuiz;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\PlayedHistory;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -74,7 +75,7 @@ class Quizcontroller extends Controller
         return response()->json(['status' => 'true'], 200);
     }
 
-    public function getLatestQuizzes(){
+    public function getHomeQuizzes(){
         $latest_quizzes = Quiz::select('quizzes.*','users.name as user_name','categories.name as category_name')
         ->leftJoin('users','quizzes.user_id','users.id')
         ->leftJoin('categories','quizzes.category_id','categories.id')
@@ -87,7 +88,25 @@ class Quizcontroller extends Controller
             $quiz->saved = $savedQuiz ? true : false;
         }
 
-        return response()->json(['status' => true , 'latest_quizzes' => $latest_quizzes], 200);
+        $most_played_quizzes = Quiz::select('quizzes.*','users.name as user_name','categories.name as category_name')
+        ->leftJoin('users','quizzes.user_id','users.id')
+        ->leftJoin('categories','quizzes.category_id','categories.id')
+        ->orderBy('quizzes.created_at','desc')->take(8)->get();
+
+
+        foreach ($most_played_quizzes as $quiz) {
+            $savedQuiz = SavedQuiz::where('user_id', Auth::user()->id)
+                ->where('quiz_id', $quiz->quiz_id)
+                ->first();
+
+            $quiz->saved = $savedQuiz ? true : false;
+        }
+
+        return response()->json([
+            'status' => true ,
+            'latest_quizzes' => $latest_quizzes ,
+            'most_played_quizzes' => $most_played_quizzes
+        ], 200);
     }
 
     public function getAllQuizzes(Request $request){
@@ -135,14 +154,16 @@ class Quizcontroller extends Controller
     }
 
     public function getDetail(Request $request){
-        $quiz = Quiz::select('quizzes.*','users.name as user_name','categories.name as category_name')
+        $quiz = Quiz::select('quizzes.*','users.name as user_name','users.profile_photo_path as user_image','categories.name as category_name')
         ->leftJoin('users','quizzes.user_id','users.id')
         ->leftJoin('categories','quizzes.category_id','categories.id')
         ->orderBy('quizzes.created_at','desc')
         ->where('quiz_id',$request->quiz_id)
         ->first();
 
-        return response()->json(['status'=>true,'quiz'=>$quiz], 200);
+        $played_count = PlayedHistory::where('quiz_id',$request->quiz_id)->count();
+
+        return response()->json(['status'=>true,'quiz'=>$quiz,'played_count'=>$played_count], 200);
     }
 
     public function searchQuizzes(Request $request){

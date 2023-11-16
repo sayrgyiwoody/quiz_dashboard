@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\QuizController;
 use App\Http\Controllers\Api\SaveQuizController;
 use App\Http\Controllers\Api\UserAccountController;
@@ -52,7 +53,7 @@ Route::group(['prefix'=>'quiz','middleware'=>'auth:sanctum'],function(){
     // update quiz
     Route::post('/update',[QuizController::class,'update']);
 
-    Route::get('/latest',[QuizController::class,'getLatestQuizzes']);
+    Route::get('/getHomeQuizzes',[QuizController::class,'getHomeQuizzes']);
 
     Route::post('/all',[QuizController::class,'getAllQuizzes']);
 
@@ -79,3 +80,11 @@ Route::group(['prefix'=>'quiz','middleware'=>'auth:sanctum'],function(){
 
 });
 
+//get question list with id
+Route::post('/getQuestionList',[QuestionController::class,'getQuestionList'])->middleware('auth:sanctum');
+
+// answer check for each question
+Route::post('/answerCheck',[QuestionController::class,'answerCheck'])->middleware('auth:sanctum');
+
+// request answer
+Route::post('/answerRequest',[QuestionController::class,'answerRequest'])->middleware('auth:sanctum');

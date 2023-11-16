@@ -16,6 +16,7 @@ class Quiz extends Model
         'title',
         'desc',
         'total_count',
+        'played_count',
     ];
 
     public function category()
