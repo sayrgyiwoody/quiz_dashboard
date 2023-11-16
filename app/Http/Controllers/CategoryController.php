@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Storage;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
@@ -51,15 +51,15 @@ class CategoryController extends Controller
      private function categoryGetData($request) {
         return [
             'name' => $request->categoryName,
-            
+
         ];
     }
 
     //delete category
     public function delete(Request $request) {
         $dbImage = Category::select('image')->where('id',$request->id)->first();
-        $dbImage = $dbImage->image;
             if($dbImage!=null) {
+            $dbImage = $dbImage->image;
                 Storage::delete('public/categoryImages/'.$dbImage);
             }
         Category::where('id',$request->id)->delete();

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title',100);
             $table->longText('desc');
             $table->integer('total_count');
-            $table->integer('played_count');
+            $table->integer('played_count')->default(0);
             $table->timestamps();
         });
     }

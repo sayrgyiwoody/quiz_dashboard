@@ -154,7 +154,7 @@
 
                 @foreach ($category as $c)
                 <tr class="text-zinc-800 dark:text-slate-100 bg-white border-b dark:bg-zinc-800 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-600">
-                    <td scope="col" class="px-6 py-3">
+                    <td id="cId" scope="col" class="px-6 py-3">
                         {{$c->id}}
                     </td>
                     <td scope="col" class="md:px-6 py-1 md:py-3">

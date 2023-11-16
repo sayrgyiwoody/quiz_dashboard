@@ -91,7 +91,9 @@ class Quizcontroller extends Controller
         $most_played_quizzes = Quiz::select('quizzes.*','users.name as user_name','categories.name as category_name')
         ->leftJoin('users','quizzes.user_id','users.id')
         ->leftJoin('categories','quizzes.category_id','categories.id')
-        ->orderBy('quizzes.created_at','desc')->take(8)->get();
+        ->orderBy('quizzes.played_count','desc')
+        ->where('quizzes.played_count','>',0)
+        ->take(8)->get();
 
 
         foreach ($most_played_quizzes as $quiz) {

@@ -38,6 +38,10 @@ class QuestionController extends Controller
                     'user_id' => Auth::user()->id,
                 ]);
             }
+            $played_count = Quiz::where('quiz_id',$quiz_id)->first();
+            Quiz::where('quiz_id',$quiz_id)->update([
+                'played_count' => $played_count->played_count + 1
+            ]);
         }
     }
 
