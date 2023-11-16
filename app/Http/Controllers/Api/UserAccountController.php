@@ -20,10 +20,8 @@ class UserAccountController extends Controller
     public function getProfileInfo(){
         $user = User::select('name','email','gender','number','address','profile_photo_path')
         ->where('id',Auth::user()->id)->first();
-        $filteredUser = array_filter($user->toArray(), function ($value) {
-            return $value != "null";
-        });
-        return response()->json(['status'=>true,'user'=>$filteredUser], 200);
+
+        return response()->json(['status'=>true,'user'=>$user], 200);
 
     }
 

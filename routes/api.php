@@ -70,11 +70,17 @@ Route::group(['prefix'=>'quiz','middleware'=>'auth:sanctum'],function(){
     // delete quiz
     Route::post('/deleteQuiz',[QuizController::class,'deleteQuiz']);
 
+    // delete all history of user
+    Route::post('/deleteAllHistory',[QuizController::class,'deleteAllHistory']);
+
     // get edit information
     Route::post('/getEditInfo',[QuizController::class,'getEditInfo']);
 
 
     Route::post('/getPaginatedSaved',[SaveQuizController::class,'getPaginatedSaved']);
+
+    Route::post('/getRecentQuizzes',[SaveQuizController::class,'getRecentQuizzes']);
+
 
     Route::post('/getCreatedQuizzes',[SaveQuizController::class,'getCreatedQuizzes']);
 

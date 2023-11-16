@@ -193,6 +193,12 @@ class Quizcontroller extends Controller
 
     }
 
+    public function deleteAllHistory(){
+        PlayedHistory::where('user_id',Auth::user()->id)->delete();
+        return response()->json(['status'=>'deleted','icon'=>'success','message'=>'All played histories deleted successfully.'], 200);
+
+    }
+
     public function getEditInfo(Request $request){
         $quiz = Quiz::where('quiz_id',$request->quiz_id)->first();
         $question = Question::where('quiz_id',$request->quiz_id)->first();
