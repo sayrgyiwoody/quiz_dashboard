@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -34,10 +35,48 @@ class AuthController extends Controller
         }
     }
 
-    public function validateToken(){
-        return response()->json([
-            'status' => 'true'
-        ], 200);
+    public function register(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:3|max:20',
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                'unique:users,email,'],
+            'password' => 'required|min:6',
+            'gender' => 'required',
+            'birthday' => 'required|date',
+            'address' => 'required|max:100',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors'=>$validator->errors()]);
+        }else {
+            $data = $this->getAccountData($request);
+            $user = User::create($data);
+            return response()->json([
+                'status' => true ,
+                'user' => $user,
+                'token' => $user->createToken(time())->plainTextToken
+            ], 200);
+        }
+
+
+    }
+
+
+
+    //get account data as object format
+    private function getAccountData($request) {
+        return [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'gender' => $request->gender,
+            'birthday' => $request->birthday,
+            'address' => $request->address,
+        ];
     }
 
 

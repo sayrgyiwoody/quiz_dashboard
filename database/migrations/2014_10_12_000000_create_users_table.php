@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('role',15)->default('user');
             $table->string('gender',10)->nullable();
-            $table->string('number',20)->nullable();
+            $table->date('birthday')->nullable();
             $table->string('address',100)->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();

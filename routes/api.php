@@ -25,6 +25,7 @@ use App\Http\Controllers\Api\UserAccountController;
 
 // login account
 Route::post('/login',[AuthController::class,'login']);
+Route::post('/register',[AuthController::class,'register']);
 
 
 Route::group(['prefix'=>'account','middleware'=>'auth:sanctum'],function(){

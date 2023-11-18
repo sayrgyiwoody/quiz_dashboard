@@ -49,7 +49,7 @@ class AdminAccountController extends Controller
                 'unique:users,email,' . Auth::user()->id,],
             'gender' => 'required',
             'image' => 'mimes:png,jpg,jpeg|file',
-            'number' => 'max:20',
+            'birthday' => 'date',
             'address' => 'max:100',
         ]);
 
@@ -78,7 +78,7 @@ class AdminAccountController extends Controller
             'email' => $request->email,
             'updated_at' => Carbon::now(),
             'gender' => $request->gender,
-            'number' => $request->number,
+            'birthday' => $request->birthday,
             'address' => $request->address,
         ];
     }

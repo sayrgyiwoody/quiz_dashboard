@@ -18,7 +18,7 @@ class UserAccountController extends Controller
 {
     //get profile info
     public function getProfileInfo(){
-        $user = User::select('name','email','gender','number','address','profile_photo_path')
+        $user = User::select('name','email','gender','birthday','address','profile_photo_path')
         ->where('id',Auth::user()->id)->first();
 
         return response()->json(['status'=>true,'user'=>$user], 200);
@@ -37,7 +37,7 @@ class UserAccountController extends Controller
                 'unique:users,email,' . Auth::user()->id,],
             'gender' => 'required',
             'image' => 'mimes:png,jpg,jpeg|file',
-            'number' => 'max:20',
+            'birthday' => 'date',
             'address' => 'max:100',
         ]);
 
@@ -88,7 +88,7 @@ class UserAccountController extends Controller
             'email' => $request->email,
             'updated_at' => Carbon::now(),
             'gender' => $request->gender,
-            'number' => $request->number,
+            'birthday' => $request->birthday,
             'address' => $request->address,
         ];
     }
