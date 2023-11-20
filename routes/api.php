@@ -3,9 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\QuizController;
+use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\SaveQuizController;
+use App\Http\Controllers\Api\ForgotPasswordController;
 use App\Http\Controllers\Api\UserAccountController;
 
 /*
@@ -26,6 +27,8 @@ use App\Http\Controllers\Api\UserAccountController;
 // login account
 Route::post('/login',[AuthController::class,'login']);
 Route::post('/register',[AuthController::class,'register']);
+Route::post('/requestPassword',[ForgotPasswordController::class,'requestPassword']);
+
 
 
 Route::group(['prefix'=>'account','middleware'=>'auth:sanctum'],function(){

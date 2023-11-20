@@ -74,7 +74,7 @@ class ForgotPasswordController extends Controller
                 'email' => $request->email
             ])->delete();
 
-            return redirect()->route('login')->with('info','Your password has been changed! You can login with new password ')
+            return redirect()->back()->with('info','Your password has been changed! You can login with new password ')
             ->with('verifiedEmail',$request->email);
         }
 
