@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminAccountController;
 use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\QuizController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,12 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/delete',[CategoryController::class,'delete'])->name('category.delete');
             Route::post('/editInfo',[CategoryController::class,'editInfo'])->name('category.editInfo');
             Route::post('edit',[CategoryController::class,'edit'])->name('category.edit');
+        });
+
+        Route::group(['prefix'=>'quiz'],function(){
+            Route::get('/',[QuizController::class,'list'])->name('quiz.list');
+            Route::post('/delete',[QuizController::class,'delete'])->name('quiz.delete');
+            Route::get('/getDetail/{quiz_id}',[QuizController::class, 'getDetail'])->name('quiz.getDetail');
         });
 
         Route::group(['prefix'=> 'accounts'],function(){

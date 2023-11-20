@@ -1,7 +1,11 @@
 <x-guest-layout>
     <x-authentication-card>
-    <h4 class="text-left text-xl mb-3 font-semibold text-zinc-900 dark:text-white">Reset Your Password</h4>
-
+    <h4 class="text-left text-xl mb-4 font-semibold text-zinc-900 dark:text-white">Reset Your Password</h4>
+        @if (session('fail'))
+        <div class="mb-4 font-medium text-sm text-red-600">
+            {{ session('fail') }}
+        </div>
+        @endif
         <form action="{{route('reset.password')}}" method="post" novalidate="novalidate">
             @csrf
             <input type="hidden" name="token" value="{{$token}}">

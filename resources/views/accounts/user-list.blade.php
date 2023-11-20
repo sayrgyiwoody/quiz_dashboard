@@ -133,7 +133,7 @@
                     <form action="{{route('accounts.changeRole')}}" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="{{$user->id}}">
-                        <button type="submit" data-id="" class="btn-edit mt-1">
+                        <button type="submit" data-id="" class="btn-edit bg-primary p-2 rounded hover:bg-primary_hover duration-100">
                             <div data-popover id="popover-edit" role="tooltip" class="absolute z-10 invisible inline-block text-sm text-zinc-500 transition-opacity duration-300 bg-white border border-zinc-200 rounded-lg shadow-sm opacity-0 dark:text-zinc-400 dark:border-zinc-600 dark:bg-zinc-800">
                                 <div class="px-3 py-2 bg-zinc-100 border-b border-zinc-200 rounded-t-lg dark:border-zinc-600 dark:bg-zinc-900">
                                     <h3 class="font-semibold text-blue-600">Change Role</h3>
@@ -143,11 +143,11 @@
                                 </div>
                                 <div data-popper-arrow></div>
                             </div>
-                            <svg class="text-slate-600 dark:text-slate-50" data-popover-target="popover-edit" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm.06 17v-2.01H12c-1.28 0-2.56-.49-3.54-1.46a5.006 5.006 0 0 1-.64-6.29l1.1 1.1c-.71 1.33-.53 3.01.59 4.13c.7.7 1.62 1.03 2.54 1.01v-2.14l2.83 2.83L12.06 19zm4.11-4.24l-1.1-1.1c.71-1.33.53-3.01-.59-4.13A3.482 3.482 0 0 0 12 8.5h-.06v2.15L9.11 7.83L11.94 5v2.02c1.3-.02 2.61.45 3.6 1.45c1.7 1.7 1.91 4.35.63 6.29z"/></svg>
+                            <svg class="text-white w-6 h-6" data-popover-target="popover-edit" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm.06 17v-2.01H12c-1.28 0-2.56-.49-3.54-1.46a5.006 5.006 0 0 1-.64-6.29l1.1 1.1c-.71 1.33-.53 3.01.59 4.13c.7.7 1.62 1.03 2.54 1.01v-2.14l2.83 2.83L12.06 19zm4.11-4.24l-1.1-1.1c.71-1.33.53-3.01-.59-4.13A3.482 3.482 0 0 0 12 8.5h-.06v2.15L9.11 7.83L11.94 5v2.02c1.3-.02 2.61.45 3.6 1.45c1.7 1.7 1.91 4.35.63 6.29z"/></svg>
                         </button>
                     </form>
 
-                    <button data-modal-target="default-modal" data-modal-toggle="default-modal" type="button" class="ms-1 btn-delete">
+                    <button data-modal-target="default-modal" data-modal-toggle="default-modal" type="button" class=" btn-delete ms-2 bg-red-500 p-2 rounded hover:bg-red-700 duration-100">
                         <div data-popover id="popover-delete" role="tooltip" class="absolute z-10 invisible inline-block text-sm text-zinc-500 transition-opacity duration-300 bg-white border border-zinc-200 rounded-lg shadow-sm opacity-0 dark:text-zinc-400 dark:border-zinc-600 dark:bg-zinc-800">
                             <div class="px-3 py-2 bg-zinc-100 border-b border-zinc-200 rounded-t-lg dark:border-zinc-600 dark:bg-zinc-900">
                                 <h3 class="font-semibold text-red-600">Delete Account</h3>
@@ -157,7 +157,7 @@
                             </div>
                             <div data-popper-arrow></div>
                         </div>
-                        <svg  class="text-slate-600 dark:text-slate-50" data-popover-target="popover-delete" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12S6.47 2 12 2m5 5h-2.5l-1-1h-3l-1 1H7v2h10V7M9 18h6a1 1 0 0 0 1-1v-7H8v7a1 1 0 0 0 1 1Z"/></svg>
+                        <svg  class="text-white w-6 h-6" data-popover-target="popover-delete" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12S6.47 2 12 2m5 5h-2.5l-1-1h-3l-1 1H7v2h10V7M9 18h6a1 1 0 0 0 1-1v-7H8v7a1 1 0 0 0 1 1Z"/></svg>
                     </button>
                     <!-- Main modal -->
                     <div id="default-modal" tabindex="-1" aria-hidden="true" style="background-color:#27272aa8;" class="absolute  top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">

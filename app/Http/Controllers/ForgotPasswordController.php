@@ -41,7 +41,7 @@ class ForgotPasswordController extends Controller
                     ->subject('Reset Password');
         });
 
-        return back()->with('alert','We have e-mailed your password reset link!');
+        return back()->with('message_sent','We have e-mailed your password reset link!');
     }
 
     public function showResetForm(Request $request, $token = null) {
@@ -62,7 +62,7 @@ class ForgotPasswordController extends Controller
         ])->first();
 
         if(!$check_token) {
-            return back()->withInput()->with('fail','Invalid token');
+            return back()->withInput()->with('fail','Invalid token or request time out!');
         }else {
             User::where('email',$request->email)
             ->update([
