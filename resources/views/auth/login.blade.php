@@ -53,6 +53,7 @@
                 Login
             </button>
         </form>
+        
     </x-authentication-card>
 </x-guest-layout>
 

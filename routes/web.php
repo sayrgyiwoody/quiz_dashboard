@@ -4,13 +4,15 @@ use App\Models\User;
 use App\Events\Hello;
 use App\Events\PrivateTest;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QuizController;
+use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminAccountController;
 use App\Http\Controllers\AdminSettingController;
+use App\Http\Controllers\Auth\ProviderController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ForgotPasswordController;
-use App\Http\Controllers\QuizController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,3 +93,6 @@ Route::get('/broadcast',function(){
     return 'event submitted';
 });
 
+Route::get('/auth/{provider}/redirect',[ProviderController::class,'redirect']);
+
+Route::get('/auth/{provider}/callback',[ProviderController::class,'callback']);
