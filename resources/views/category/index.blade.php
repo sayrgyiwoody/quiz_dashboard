@@ -49,7 +49,8 @@
             </div>
             <input type="hidden" name="id" id="category-id" >
             <label for="" class="text-zinc-900 dark:text-slate-100">Category Image :</label>
-                <img id="category-image-2" class=" bg-slate-50 dark:bg-[#242425] border-2 dark:border-zinc-700 w-full h-60 object-cover rounded-md mt-3" src="{{asset('images/default.png')}}" alt="">
+
+            <img id="category-image-2" class=" bg-slate-50 dark:bg-[#242425] border-2 dark:border-zinc-700 w-full h-60 object-cover rounded-md mt-3" src="{{asset('images/default.png')}}" alt="">
 
                 <div class="mt-3 mb-5">
                     <div class="flex items-center justify-center w-full ">
@@ -172,7 +173,7 @@
                     </td>
                     <td scope="col" class="px-6 py-3">
                         <div class="flex items-center">
-                            <button class="bg-primary p-2 rounded hover:bg-primary_hover duration-100" data-id="{{$c->id}}" class="btn-edit">
+                            <button class="bg-primary p-2 rounded hover:bg-primary_hover duration-100 btn-edit" data-id="{{$c->id}}">
 
                                 <svg class="text-white w-6 h-6" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-2.3 6.35c.22-.21.22-.56 0-.77L15.42 7.3a.532.532 0 0 0-.77 0l-1 1l2.05 2.05l1-1M7 14.94V17h2.06l6.06-6.06l-2.06-2.06L7 14.94Z"/></svg>
                             </button>
@@ -291,7 +292,12 @@ $(document).ready(function() {
             success: function(response) {
                 const category = response.category;
                 $("#edit-form #category-name").val(category.name);
-                $("#edit-form #category-image-2").attr("src", "/storage/categoryImages/" + category.image);
+                if(category.image !== null){
+                    $("#edit-form #category-image-2").attr("src", "/storage/categoryImages/" + category.image);
+
+                }else {
+                    $("#edit-form #category-image-2").attr("src", "/images/default.png");
+                }
                 $("#edit-form #category-id").val(category.id);
             },
             error: function(error) {

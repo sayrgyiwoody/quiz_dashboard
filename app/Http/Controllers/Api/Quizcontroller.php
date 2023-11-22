@@ -23,7 +23,7 @@ class Quizcontroller extends Controller
 
     public function getCategoryWithCount(){
 
-        $categories = Category::withCount('quizzes')->get();
+        $categories = Category::withCount('quizzes')->orderBy('quizzes_count','desc')->get();
         return response()->json(['categories'=>$categories], 200);
     }
 
