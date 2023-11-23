@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\SavedQuiz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -116,6 +117,7 @@ class AdminAccountController extends Controller
             if($dbImage!=null) {
                 Storage::delete('public/'.$dbImage);
             }
+        SavedQuiz::where('user_id',Auth::user()->id)->delete();
         User::where('id',Auth::user()->id)->delete();
         return response()->json(200);
     }

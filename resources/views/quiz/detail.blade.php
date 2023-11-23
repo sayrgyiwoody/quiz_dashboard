@@ -12,12 +12,12 @@
 <div class="bg-white dark:bg-zinc-800 px-6 py-4 rounded shadow max-w-xl mx-auto ">
     <h4 style="border-left:3px solid #5850EC;" class="capitalize text-2xl font-semibold  text-zinc-800 dark:text-white mb-2 px-2">{{$quiz->title}}</h4>
     <div class="mb-3 flex items-center">
-        @if ($quiz->user_image)
-        <img class="rounded-full w-16 h-16 me-2 object-cover" src="{{asset('storage/'.$quiz->user_image)}}" alt="profile image">
-
+        @if ($quiz->provider_avatar && $quiz->user_image === null)
+            <img class="rounded-full w-16 h-16 me-2 object-cover" src="{{$quiz->provider_avatar}}" alt="profile image">
+        @elseif ($quiz->user_image)
+            <img class="rounded-full w-16 h-16 me-2 object-cover" src="{{asset('storage/'.$quiz->user_image)}}" alt="profile image">
         @else
-        <img class="rounded-full w-16 h-16 me-2 object-cover" src="https://ui-avatars.com/api/?background=2563eb&color=ffffff&name={{$quiz->user_name}}" alt="profile image">
-
+            <img class="rounded-full w-16 h-16 me-2 object-cover" src="https://ui-avatars.com/api/?background=2563eb&color=ffffff&name={{$quiz->user_name}}" alt="profile image">
         @endif
 
         <div class="flex flex-col">

@@ -91,10 +91,12 @@
                 </td>
                 <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
 
-                    @if ($user->profile_photo_path !== null)
-                    <img class="w-10 h-10 rounded-full object-cover" src="{{asset('storage/'.$user->profile_photo_path)}}" alt="Jese image">
+                    @if ($user->profile_photo_path === null && $user->provider_avatar === null)
+                        <img class="w-10 h-10 rounded-full object-cover" src="https://ui-avatars.com/api/?background=2563eb&color=ffffff&name={{$user->name}}" alt="Jese image">
+                    @elseif($user->provider_avatar && $user->profile_photo_path === null)
+                        <img class="w-10 h-10 rounded-full object-cover" src="{{$user->provider_avatar}}" alt="Jese image">
                     @else
-                    <img class="w-10 h-10 rounded-full object-cover" src="https://ui-avatars.com/api/?background=2563eb&color=ffffff&name={{$user->name}}" alt="Jese image">
+                        <img class="w-10 h-10 rounded-full object-cover" src="{{asset('storage/'.$user->profile_photo_path)}}" alt="Jese image">
 
                     @endif
                     <div class="pl-3">

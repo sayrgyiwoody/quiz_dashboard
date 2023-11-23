@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Storage;
 use App\Models\User;
+use App\Models\SavedQuiz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AccountsController extends Controller
 {
@@ -56,6 +57,7 @@ class AccountsController extends Controller
         if($dbImage!=null) {
             Storage::delete('public/'.$dbImage);
         }
+        SavedQuiz::where('user_id',$request->id)->delete();
         User::where('id',$request->id)->delete();
         return  redirect()->back()->with(["alert"=>"Account deleted successfully"]);
     }

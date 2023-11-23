@@ -32,7 +32,9 @@ class User extends Authenticatable
         'address',
         'provider',
         'provider_id',
-        'provider_token'
+        'provider_token',
+        'provider_avatar'
+
     ];
 
     /**

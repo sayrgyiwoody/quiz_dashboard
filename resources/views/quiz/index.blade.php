@@ -41,7 +41,7 @@
                         <form action="{{route('quiz.list')}}" method="GET">
                             <input type="hidden" name="filterStatus" value="MostPlayed">
                             <button class="flex items-center w-full text-start px-4 py-2 hover:bg-zinc-100 hover:text-zinc-800 dark:hover:bg-zinc-600 dark:hover:text-white">Most Played
-                                <svg class="inline-block ms-2 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M16 20v-7h4v7h-4Zm-6 0V4h4v16h-4Zm-6 0V9h4v11H4Z"/></svg>   
+                                <svg class="inline-block ms-2 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M16 20v-7h4v7h-4Zm-6 0V4h4v16h-4Zm-6 0V9h4v11H4Z"/></svg>
                             </form>
                     </li>
                 </ul>
@@ -56,7 +56,9 @@
         <form class="mt-3 md:mt-0 relative" action="{{route('quiz.list')}}" method="GET">
 
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <svg  class="w-6 h-6 text-zinc-500 dark:text-zinc-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><circle cx="10" cy="8" r="4" fill="currentColor"/><path fill="currentColor" d="M10.35 14.01C7.62 13.91 2 15.27 2 18v2h9.54c-2.47-2.76-1.23-5.89-1.19-5.99zm9.08 4.01c.36-.59.57-1.28.57-2.02c0-2.21-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4c.74 0 1.43-.22 2.02-.57L20.59 22L22 20.59l-2.57-2.57zM16 18c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2z"/></svg>
+                <svg class="w-4 h-4 text-zinc-500 dark:text-zinc-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                </svg>
             </div>
             <input type="text" name="searchKey" value="{{request('searchKey')}}" class="block p-2 pl-10 text-sm text-zinc-900 border border-zinc-300 rounded-lg w-80 bg-zinc-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for quizzes">
         </form>

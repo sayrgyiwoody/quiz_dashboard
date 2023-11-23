@@ -13,12 +13,13 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\UpdateInfoRequest;
+use App\Models\SavedQuiz;
 
 class UserAccountController extends Controller
 {
     //get profile info
     public function getProfileInfo(){
-        $user = User::select('name','email','gender','birthday','address','profile_photo_path')
+        $user = User::select('name','email','gender','birthday','address','profile_photo_path','provider_avatar')
         ->where('id',Auth::user()->id)->first();
 
         return response()->json(['status'=>true,'user'=>$user], 200);
@@ -117,12 +118,14 @@ class UserAccountController extends Controller
 
     // delete account
     public function deleteAccount(){
+
         $dbImage = User::select('profile_photo_path')->where('id',Auth::user()->id)->first();
             $dbImage =$dbImage->profile_photo_path;
-            if($dbImage!=null) {
-                Storage::delete('public/'.$dbImage);
-            }
+        if($dbImage!=null) {
+            Storage::delete('public/'.$dbImage);
+        }
+        SavedQuiz::where('user_id',Auth::user()->id)->delete();
         User::where('id',Auth::user()->id)->delete();
-        return response()->json(200);
+        return response()->json(['status' => true],200);
     }
 }

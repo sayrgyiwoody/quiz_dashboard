@@ -156,7 +156,7 @@ class Quizcontroller extends Controller
     }
 
     public function getDetail(Request $request){
-        $quiz = Quiz::select('quizzes.*','users.name as user_name','users.profile_photo_path as user_image','categories.name as category_name')
+        $quiz = Quiz::select('quizzes.*','users.name as user_name','users.profile_photo_path as user_image','users.provider_avatar as provider_avatar','categories.name as category_name')
         ->leftJoin('users','quizzes.user_id','users.id')
         ->leftJoin('categories','quizzes.category_id','categories.id')
         ->orderBy('quizzes.created_at','desc')

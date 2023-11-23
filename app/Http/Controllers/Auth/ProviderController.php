@@ -18,7 +18,6 @@ class ProviderController extends Controller
     public function callback($provider){
         try {
             $socialUser = Socialite::driver($provider)->user();
-
             $user = User::updateOrCreate(
                 [
                     'provider_id' => $socialUser->id,
@@ -29,6 +28,7 @@ class ProviderController extends Controller
                     'email' => $socialUser->email,
                     'provider_token' => $socialUser->token,
                     'provider_refresh_token' => $socialUser->refreshToken,
+                    'provider_avatar' => $socialUser->avatar
                 ]
             );
 
@@ -39,7 +39,7 @@ class ProviderController extends Controller
              $redirectUrl = env('FRONTEND_URL') . '/socialite-callback/' . $user->id . '?token=' . $token;
 
              return redirect($redirectUrl);
-             
+
         } catch (\Exception $e) {
             return redirect(env('FRONTEND_URL') . '/socialite-callback/error');
         }
