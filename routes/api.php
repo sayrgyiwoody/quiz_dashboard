@@ -6,8 +6,9 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\QuizController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\SaveQuizController;
-use App\Http\Controllers\Api\ForgotPasswordController;
+use App\Http\Controllers\Auth\ProviderController;
 use App\Http\Controllers\Api\UserAccountController;
+use App\Http\Controllers\Api\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,3 +99,6 @@ Route::post('/answerCheck',[QuestionController::class,'answerCheck'])->middlewar
 
 // request answer
 Route::post('/answerRequest',[QuestionController::class,'answerRequest'])->middleware('auth:sanctum');
+
+
+Route::get('/auth/{provider}/callback',[ProviderController::class,'callback']);
