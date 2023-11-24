@@ -94,11 +94,21 @@ class UserAccountController extends Controller
         ];
     }
 
+    // check if old password exist
+    public function isOldPassword(){
+        if(is_null(Auth::user()->password)){
+            return response()->json(['status'=>true,'isOldPassword'=>false], 200);
+        }else {
+            return response()->json(['status'=>true,'isOldPassword'=>true], 200);
+        }
+    }
+
     //Change new password
     public function changePassword(ChangePasswordRequest $request) {
         // $this->passwordValidationCheck($request);
         $dbHashPassword = Auth::user()->password;
-        if(Hash::check($request->oldPassword, $dbHashPassword)) {
+        logger($request->all());
+        if(Hash::check($request->oldPassword, $dbHashPassword) || is_null($dbHashPassword)) {
             $newPassword = hash::make($request->newPassword);
             $user = User::where('id',Auth::user()->id)->update([
                 'password' => $newPassword

@@ -36,6 +36,7 @@ Route::group(['prefix'=>'account','middleware'=>'auth:sanctum'],function(){
     // get personal information
     Route::get('/getProfileInfo',[UserAccountController::class,'getProfileInfo']);
     Route::post('/updateProfileInfo',[UserAccountController::class,'updateProfileInfo']);
+    Route::post('/isOldPassword',[UserAccountController::class,'isOldPassword']);
     Route::post('/changePassword',[UserAccountController::class,'changePassword']);
     Route::post('/deleteAccount',[UserAccountController::class,'deleteAccount']);
 

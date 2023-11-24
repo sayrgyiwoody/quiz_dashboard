@@ -44,7 +44,7 @@ class AuthController extends Controller
                 'email',
                 'max:255',
                 'unique:users,email,'],
-            'password' => 'required|min:6',
+            'password' => 'required|min:8',
             'gender' => 'required',
             'birthday' => 'required|date',
             'address' => 'required|max:100',
