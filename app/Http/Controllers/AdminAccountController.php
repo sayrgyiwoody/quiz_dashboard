@@ -41,7 +41,7 @@ class AdminAccountController extends Controller
     //Account input validation check
     private function accountValidationCheck($request) {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:3|max:20',
+            'name' => 'required|min:3|max:10',
             'email' => [
                 'required',
                 'string',

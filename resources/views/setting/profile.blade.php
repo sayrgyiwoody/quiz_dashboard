@@ -73,7 +73,7 @@
 
                 <div class="relative z-0 w-full mb-4 group mt-6">
                     <input name="birthday" value="{{old('birthday',Auth::user()->birthday)}}" type="date" class="@error('email') border-red-600 dark:border-red-600 @else border-slate-300 dark:border-zinc-700 @enderror dark:text-white px-3 relative block py-3 w-full text-sm text-gray-900 bg-transparent appearance-none border-[1.5px] rounded-md dark:focus:border-blue-500 -z-0 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                    <label class="bg-white dark:bg-zinc-800 peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 left-3 -z-10 text-zinc-900 peer-focus:z-10 origin-[0]  peer-focus:bg-white dark:peer-focus:bg-zinc-800 px-3 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">Birthday</label>
+                    <label class="bg-white dark:bg-zinc-800 peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 left-3 z-10 text-zinc-900 peer-focus:z-10 origin-[0]  peer-focus:bg-white dark:peer-focus:bg-zinc-800 px-3 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">Birthday</label>
                     @error('birthday')
                             <p class=" text-red-600 text-sm mt-2">{{$message}}</p>
                     @enderror

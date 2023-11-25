@@ -76,7 +76,7 @@ class Quizcontroller extends Controller
     }
 
     public function getHomeQuizzes(){
-        $latest_quizzes = Quiz::select('quizzes.*','users.name as user_name','categories.name as category_name')
+        $latest_quizzes = Quiz::select('quizzes.*','users.name as user_name','users.profile_photo_path as user_image','users.provider_avatar as provider_avatar','categories.name as category_name')
         ->leftJoin('users','quizzes.user_id','users.id')
         ->leftJoin('categories','quizzes.category_id','categories.id')
         ->orderBy('quizzes.created_at','desc')->take(8)->get();
@@ -88,7 +88,7 @@ class Quizcontroller extends Controller
             $quiz->saved = $savedQuiz ? true : false;
         }
 
-        $most_played_quizzes = Quiz::select('quizzes.*','users.name as user_name','categories.name as category_name')
+        $most_played_quizzes = Quiz::select('quizzes.*','users.name as user_name','users.profile_photo_path as user_image','users.provider_avatar as provider_avatar','categories.name as category_name')
         ->leftJoin('users','quizzes.user_id','users.id')
         ->leftJoin('categories','quizzes.category_id','categories.id')
         ->orderBy('quizzes.played_count','desc')
@@ -112,7 +112,7 @@ class Quizcontroller extends Controller
     }
 
     public function getAllQuizzes(Request $request){
-        $all_quizzes = Quiz::select('quizzes.*','users.name as user_name','categories.name as category_name')
+        $all_quizzes = Quiz::select('quizzes.*','users.name as user_name','users.profile_photo_path as user_image','users.provider_avatar as provider_avatar','categories.name as category_name')
         ->leftJoin('users','quizzes.user_id','users.id')
         ->leftJoin('categories','quizzes.category_id','categories.id')
         ->where('quizzes.title','like','%'.request('searchKey').'%')
@@ -133,7 +133,7 @@ class Quizcontroller extends Controller
     }
 
     public function categoryFilter(Request $request){
-        $all_quizzes = Quiz::select('quizzes.*','users.name as user_name','categories.name as category_name')
+        $all_quizzes = Quiz::select('quizzes.*','users.name as user_name','users.profile_photo_path as user_image','users.provider_avatar as provider_avatar','categories.name as category_name')
         ->leftJoin('users','quizzes.user_id','users.id')
         ->leftJoin('categories','quizzes.category_id','categories.id')
         ->orderBy('quizzes.created_at','desc')
@@ -169,7 +169,7 @@ class Quizcontroller extends Controller
     }
 
     public function searchQuizzes(Request $request){
-        $searched_quizzes = Quiz::select('quizzes.*','users.name as user_name','categories.name as category_name')
+        $searched_quizzes = Quiz::select('quizzes.*','users.name as user_name','users.profile_photo_path as user_image','users.provider_avatar as provider_avatar','categories.name as category_name')
         ->leftJoin('users','quizzes.user_id','users.id')
         ->leftJoin('categories','quizzes.category_id','categories.id')
         ->orderBy('created_at','desc')

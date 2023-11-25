@@ -29,7 +29,7 @@ class SaveQuizController extends Controller
     public function getPaginatedSaved(Request $request){
 
         $saved_quizzes = SavedQuiz::
-        select('quizzes.*','users.name as user_name','categories.name as category_name')
+        select('quizzes.*','users.name as user_name','users.profile_photo_path as user_image','users.provider_avatar as provider_avatar','categories.name as category_name')
         ->leftJoin('quizzes','saved_quizzes.quiz_id','quizzes.quiz_id')
         ->leftJoin('users','quizzes.user_id','users.id')
         ->leftJoin('categories','quizzes.category_id','categories.id')
@@ -56,7 +56,7 @@ class SaveQuizController extends Controller
     public function getRecentQuizzes(Request $request){
 
         $recent_quizzes = PlayedHistory::
-        select('played_histories.*','played_histories.updated_at as latest_played','quizzes.*','users.name as user_name','categories.name as category_name')
+        select('played_histories.*','played_histories.updated_at as latest_played','quizzes.*','users.name as user_name','users.profile_photo_path as user_image','users.provider_avatar as provider_avatar','categories.name as category_name')
         ->leftJoin('quizzes','played_histories.quiz_id','quizzes.quiz_id')
         ->leftJoin('users','quizzes.user_id','users.id')
         ->leftJoin('categories','quizzes.category_id','categories.id')
@@ -81,7 +81,7 @@ class SaveQuizController extends Controller
     }
 
     public function getCreatedQuizzes(Request $request){
-        $created_quizzes = Quiz::select('quizzes.*','users.name as user_name','categories.name as category_name')
+        $created_quizzes = Quiz::select('quizzes.*','users.name as user_name','users.profile_photo_path as user_image','users.provider_avatar as provider_avatar','categories.name as category_name')
         ->leftJoin('users','quizzes.user_id','users.id')
         ->leftJoin('categories','quizzes.category_id','categories.id')
         ->orderBy('quizzes.created_at','desc')

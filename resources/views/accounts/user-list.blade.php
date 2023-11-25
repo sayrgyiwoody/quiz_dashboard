@@ -68,7 +68,7 @@
                     Gender
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Number
+                    Birthday
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Address
@@ -113,8 +113,8 @@
                     @endif
                 </td>
                 <td class="px-6 py-4">
-                    @if ($user->number)
-                    {{$user->number}}
+                    @if ($user->birthday)
+                    {{$user->birthday}}
                     @else
                     not set
                     @endif

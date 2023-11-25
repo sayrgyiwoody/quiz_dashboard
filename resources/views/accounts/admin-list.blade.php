@@ -69,7 +69,7 @@
                     Gender
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Number
+                    Birthday
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Address
@@ -114,8 +114,8 @@
                     @endif
                 </td>
                 <td class="px-6 py-4">
-                    @if ($admin->number)
-                    {{$admin->number}}
+                    @if ($admin->birthday)
+                    {{$admin->birthday}}
                     @else
                     not set
                     @endif
@@ -248,6 +248,7 @@
         color: `${textColor}`,
         background: `${bgColor}`,
     })
+
 
 @endif
 
