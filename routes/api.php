@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\SaveQuizController;
 use App\Http\Controllers\Auth\ProviderController;
 use App\Http\Controllers\Api\UserAccountController;
 use App\Http\Controllers\Api\ForgotPasswordController;
+use App\Http\Controllers\Api\RoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +90,12 @@ Route::group(['prefix'=>'quiz','middleware'=>'auth:sanctum'],function(){
 
 
     Route::post('/getCreatedQuizzes',[SaveQuizController::class,'getCreatedQuizzes']);
+
+});
+
+Route::group(['prefix'=>'multiplayer','middleware'=>'auth:sanctum'],function(){
+    Route::post('/generateRoom',[RoomController::class,'generateRoom']);
+    Route::post('/joinRoom',[RoomController::class,'joinRoom']);
 
 });
 
