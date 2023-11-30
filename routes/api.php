@@ -96,6 +96,8 @@ Route::group(['prefix'=>'quiz','middleware'=>'auth:sanctum'],function(){
 Route::group(['prefix'=>'multiplayer','middleware'=>'auth:sanctum'],function(){
     Route::post('/generateRoom',[RoomController::class,'generateRoom']);
     Route::post('/joinRoom',[RoomController::class,'joinRoom']);
+    Route::post('/getRoomInfo',[RoomController::class,'getRoomInfo']);
+    Route::post('/endRoom',[RoomController::class,'endRoom']);
 
 });
 

@@ -13,7 +13,9 @@ use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\Auth\ProviderController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ForgotPasswordController;
+use Illuminate\Support\Facades\Broadcast;
 
+Broadcast::routes();
 /*
 |--------------------------------------------------------------------------
 | Web Routes
