@@ -70,7 +70,7 @@ class RoomController extends Controller
                 ->where('is_host',1)
                 ->first();
 
-                $isCurrentUserHost = Participant::where('user_id', Auth::user()->id)->where('is_host', true)->exists();
+                $isCurrentUserHost = Participant::where('user_id', Auth::user()->id)->where('is_host', 1)->exists();
 
             return response()->json(['status'=>true,'host'=>$host,'participants'=>$participants,'isCurrentUserHost'=>$isCurrentUserHost], 200);
         }else {
