@@ -31,6 +31,7 @@ Route::post('/login',[AuthController::class,'login']);
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/requestPassword',[ForgotPasswordController::class,'requestPassword']);
 
+Route::post('/logout',[AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 
 Route::group(['prefix'=>'account','middleware'=>'auth:sanctum'],function(){
@@ -112,3 +113,4 @@ Route::post('/answerRequest',[QuestionController::class,'answerRequest'])->middl
 
 
 Route::get('/auth/{provider}/callback',[ProviderController::class,'callback']);
+

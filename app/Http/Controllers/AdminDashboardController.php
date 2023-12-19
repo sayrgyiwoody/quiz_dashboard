@@ -15,7 +15,10 @@ class AdminDashboardController extends Controller
         $user_count = User::where('role','user')->get()->count();
         $quiz_count = Quiz::get()->count();
 
+        $most_played_quizzes = Quiz::select('quizzes.*','categories.name as category_name')
+        ->leftJoin('categories','quizzes.category_id','categories.id')
+        ->orderBy('played_count','desc')->take(5)->get();
 
-        return view('dashboard',compact('category_count','admin_count','user_count','quiz_count'));
+        return view('dashboard',compact('category_count','admin_count','user_count','quiz_count','most_played_quizzes'));
     }
 }

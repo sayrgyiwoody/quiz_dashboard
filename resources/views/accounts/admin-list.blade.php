@@ -90,7 +90,8 @@
                 <td id="aId" class="px-6 py-4">
                     {{$admin->id}}
                 </td>
-                <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class=" text-gray-900 whitespace-nowrap dark:text-white">
+                    <a class="flex items-center px-6 py-4 hover:text-blue-600 dark:hover:text-blue-500" href="{{ route('accounts.detail',$admin->id) }}">
 
                     @if ($admin->profile_photo_path === null && $admin->provider_avatar === null)
                         <img class="w-10 h-10 rounded-full object-cover" src="https://ui-avatars.com/api/?background=2563eb&color=ffffff&name={{$admin->name}}" alt="Jese image">
@@ -104,6 +105,7 @@
                         <div class="text-base font-semibold ">{{$admin->name}}</div>
                         <div class="font-normal text-gray-500 dark:text-muted">{{$admin->email}}</div>
                     </div>
+                    </a>
                 </th>
                 <td class="px-6 py-4">
                     @if ($admin->gender)

@@ -72,4 +72,10 @@ class AccountsController extends Controller
         }
         return  redirect()->back()->with(["alert"=>"Account Role Changed successfully"]);
     }
+
+    // view user info detail
+    public function detailInfo($id){
+        $user = User::where('id',$id)->first();
+        return view('accounts.detail-info',compact('user'));
+    }
 }

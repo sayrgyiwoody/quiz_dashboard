@@ -60,7 +60,10 @@
  </button>
 
  <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+
     <div class="h-full px-3 py-4 overflow-y-auto bg-white dark:bg-zinc-800 ">
+        <img src="{{ asset('images/logo.png') }}" class=" w-20 h-20 mx-auto mt-3  " alt="">
+        <p class=" font-semibold text-xl text-zinc-900 dark:text-slate-100 text-center mb-2">Brain Lab</p>
        <ul class="space-y-2 font-medium">
           <li>
              <a href="{{route('admin.dashboard')}}" class="nav-link flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-700 group">
@@ -85,15 +88,6 @@
                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path fill="currentColor" d="M176 232a8 8 0 0 1-8 8H88a8 8 0 0 1 0-16h80a8 8 0 0 1 8 8Zm40-128a87.55 87.55 0 0 1-33.64 69.21A16.24 16.24 0 0 0 176 186v6a16 16 0 0 1-16 16H96a16 16 0 0 1-16-16v-6a16 16 0 0 0-6.23-12.66A87.59 87.59 0 0 1 40 104.49C39.74 56.83 78.26 17.14 125.88 16A88 88 0 0 1 216 104Zm-32.11-9.34a57.6 57.6 0 0 0-46.56-46.55a8 8 0 0 0-2.66 15.78c16.57 2.79 30.63 16.85 33.44 33.45A8 8 0 0 0 176 104a9 9 0 0 0 1.35-.11a8 8 0 0 0 6.54-9.23Z"/></svg>
                 <span class="flex-1 ml-3 text-zinc-900 dark:text-white whitespace-nowrap">Quizzes</span>
 
-             </a>
-          </li>
-          <li>
-             <a href="#" class="nav-link flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-700 group">
-                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                   <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"/>
-                </svg>
-                <span class="flex-1 ml-3 text-zinc-900 dark:text-white whitespace-nowrap">Inbox</span>
-                <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">3</span>
              </a>
           </li>
           <li>

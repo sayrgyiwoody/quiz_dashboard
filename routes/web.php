@@ -76,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('userList',[AccountsController::class,'userList'])->name('accounts.user.list');
             Route::post('changeRole',[AccountsController::class,'changeRole'])->name('accounts.changeRole');
             Route::post('delete',[AccountsController::class,'delete'])->name('accounts.delete');
+            Route::get('detailInfo/{id}',[AccountsController::class, 'detailInfo'])->name('accounts.detail');
         });
 
 
