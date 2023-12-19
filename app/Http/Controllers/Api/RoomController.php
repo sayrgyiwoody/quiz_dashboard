@@ -35,6 +35,7 @@ class RoomController extends Controller
     }
 
     public function joinRoom(Request $request){
+        Participant::where('user_id',Auth::user()->id)->delete();
         $room = Room::where('room_code',$request->room_code)->first();
         if($room){
 
@@ -43,6 +44,7 @@ class RoomController extends Controller
                 Participant::create([
                     'room_id' => $room->room_id,
                     'user_id' => Auth::user()->id,
+                    'is_host' => 0,
                 ]);
             }
 
