@@ -7,8 +7,8 @@
         <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m-3.29 13.59L14.29 18l-6-6l6-6l1.42 1.41L11.12 12l4.59 4.59Z"/></svg>Back
     </a>
     <form class="w-full mt-4 p-6 md:p-7 md:w-2/3 bg-white dark:bg-zinc-800 shadow-sm rounded">
-        <h4 class="text-center text-zinc-800 text-2xl font-semibold text-zinc-900 dark:text-white">Personal Info</h4>
-        <p class="text-center text-zinc-600 dark:text-muted font-medium mb-4">Update your own personal informations</p>
+        <h4 class="text-center text-zinc-800 text-2xl font-semibold text-zinc-900 dark:text-white">Account Information</h4>
+        <p class="text-center text-zinc-600 dark:text-muted font-medium mb-4">More Detail information of user account</p>
         <hr class="mb-6  bg-zinc-900 h-[1.6px]">
         <div class="grid md:grid-cols-3 md:space-x-6">
             <div class="">
