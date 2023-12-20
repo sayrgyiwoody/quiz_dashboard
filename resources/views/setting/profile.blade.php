@@ -13,10 +13,14 @@
         <hr class="mb-6  bg-zinc-900 h-[1.6px]">
         <div class="grid md:grid-cols-3 md:space-x-6">
             <div class="">
-                @if (Auth::user()->profile_photo_path === null)
-                    <img id="profile-image" class=" w-full h-60 object-cover rounded-md" src="https://ui-avatars.com/api/?background=2563eb&color=ffffff&name={{Auth::user()->name}}" alt="">
-                @else
-                <img id="profile-image" class=" w-full h-60 object-cover rounded-md" src="{{asset('storage/'.Auth::user()->profile_photo_path)}}" alt="">
+                @if (Auth::user()->profile_photo_path === null && Auth::user()->provider_avatar === null )
+                    <img id="profile-image" class=" w-full md:h-60 object-cover rounded-md" src="https://ui-avatars.com/api/?background=2563eb&color=ffffff&name={{Auth::user()->name}}" alt="">
+
+                    @elseif (Auth::user()->provider_avatar !== null && Auth::user()->profile_photo_path === null)
+                    <img id="profile-image" class=" w-full md:h-60 object-cover rounded-md" src="{{ Auth::user()->provider_avatar }}" alt="">
+
+                    @else
+                    <img id="profile-image" class=" w-full md:h-60 object-cover rounded-md" src="{{asset('storage/'.Auth::user()->profile_photo_path)}}" alt="">
                 @endif
                 <div class="mt-3 mb-5">
                     <div class="flex items-center justify-center w-full ">
@@ -37,7 +41,7 @@
                 </div>
 
 
-                <div class="flex items-center space-x-3 ms-3">
+                <div class="flex items-center space-x-3 ms-3 mb-3 md:mb-0">
                     <div class="flex items-center">
                         <input @if(Auth::user()->gender==='male') checked @endif id="default-radio-1" type="radio" value="male" name="gender" class=" cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer ">Male</label>

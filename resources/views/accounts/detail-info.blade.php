@@ -13,18 +13,18 @@
         <div class="grid md:grid-cols-3 md:space-x-6">
             <div class="">
                 @if ($user->profile_photo_path === null && $user->provider_avatar === null )
-                    <img id="profile-image" class=" w-full h-60 object-cover rounded-md" src="https://ui-avatars.com/api/?background=2563eb&color=ffffff&name={{$user->name}}" alt="">
+                    <img id="profile-image" class=" w-full md:h-60 object-cover rounded-md" src="https://ui-avatars.com/api/?background=2563eb&color=ffffff&name={{$user->name}}" alt="">
 
                     @elseif ($user->provider_avatar !== null && $user->profile_photo_path === null)
-                    <img id="profile-image" class=" w-full h-60 object-cover rounded-md" src="{{ $user->provider_avatar }}" alt="">
+                    <img id="profile-image" class=" w-full md:h-60 object-cover rounded-md" src="{{ $user->provider_avatar }}" alt="">
 
                     @else
-                    <img id="profile-image" class=" w-full h-60 object-cover rounded-md" src="{{asset('storage/'.$user->profile_photo_path)}}" alt="">
+                    <img id="profile-image" class=" w-full md:h-60 object-cover rounded-md" src="{{asset('storage/'.$user->profile_photo_path)}}" alt="">
                 @endif
 
 
 
-                <div class="flex items-center space-x-3 mt-5 ms-3">
+                <div class="flex items-center space-x-3 mt-5 ms-3 mb-3 md:mb-0">
                     <div class="flex items-center">
                         <input @if($user->gender==='male') checked @endif id="default-radio-1" type="radio" value="male" name="gender" class=" cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer ">Male</label>

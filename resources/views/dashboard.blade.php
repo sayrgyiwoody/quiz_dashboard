@@ -3,38 +3,50 @@
 @section('main-content')
 <div class="grid md:grid-cols-2 md:space-x-3 space-y-3 md:space-y-0 mb-3">
     <div class="grid grid-cols-2 gap-4 ">
-        <div class="p-3 justify-center animate__animated animate__bounceIn hover:bg-slate-100 dark:hover:bg-zinc-700 duration-150 rounded bg-white dark:bg-zinc-800">
+            <div class="group p-3 justify-center animate__animated animate__bounceIn hover:bg-slate-100 dark:hover:bg-zinc-700 duration-150 rounded bg-white dark:bg-zinc-800">
+                <a href="{{ route('accounts.admin.list') }}">
 
-            <div class="bg-indigo-500 text-white rounded-full p-4 my-3 w-fit mx-auto ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m16 7.58l-5.5-2.4L5 7.58v3.6c0 3.5 2.33 6.74 5.5 7.74c.25-.08.49-.2.73-.3c-.15-.51-.23-1.06-.23-1.62c0-2.97 2.16-5.43 5-5.91V7.58z" opacity=".3"/><path fill="currentColor" d="M17 13c-2.21 0-4 1.79-4 4s1.79 4 4 4s4-1.79 4-4s-1.79-4-4-4zm0 1.38c.62 0 1.12.51 1.12 1.12s-.51 1.12-1.12 1.12s-1.12-.51-1.12-1.12s.5-1.12 1.12-1.12zm0 5.37c-.93 0-1.74-.46-2.24-1.17c.05-.72 1.51-1.08 2.24-1.08s2.19.36 2.24 1.08c-.5.71-1.31 1.17-2.24 1.17z" opacity=".3"/><circle cx="17" cy="15.5" r="1.12" fill="currentColor"/><path fill="currentColor" d="M18 11.09V6.27L10.5 3L3 6.27v4.91c0 4.54 3.2 8.79 7.5 9.82c.55-.13 1.08-.32 1.6-.55A5.973 5.973 0 0 0 17 23c3.31 0 6-2.69 6-6c0-2.97-2.16-5.43-5-5.91zM11 17c0 .56.08 1.11.23 1.62c-.24.11-.48.22-.73.3c-3.17-1-5.5-4.24-5.5-7.74v-3.6l5.5-2.4l5.5 2.4v3.51c-2.84.48-5 2.94-5 5.91zm6 4c-2.21 0-4-1.79-4-4s1.79-4 4-4s4 1.79 4 4s-1.79 4-4 4z"/><path fill="currentColor" d="M17 17.5c-.73 0-2.19.36-2.24 1.08c.5.71 1.32 1.17 2.24 1.17s1.74-.46 2.24-1.17c-.05-.72-1.51-1.08-2.24-1.08z"/></svg>
-            </div>
-            <h5 class="text-2xl font-semibold text-center text-zinc-900 dark:text-slate-100">{{$admin_count}}</h5>
-            <p class="text-center text-gray-500 dark:text-muted">Total Admins</p>
-        </div>
-        <div class="p-3 justify-center animate__animated animate__bounceIn hover:bg-slate-100 dark:hover:bg-zinc-700 duration-150 rounded bg-white dark:bg-zinc-800">
+                    <div class="bg-indigo-500 text-white rounded-full p-4 my-3 w-fit mx-auto ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m16 7.58l-5.5-2.4L5 7.58v3.6c0 3.5 2.33 6.74 5.5 7.74c.25-.08.49-.2.73-.3c-.15-.51-.23-1.06-.23-1.62c0-2.97 2.16-5.43 5-5.91V7.58z" opacity=".3"/><path fill="currentColor" d="M17 13c-2.21 0-4 1.79-4 4s1.79 4 4 4s4-1.79 4-4s-1.79-4-4-4zm0 1.38c.62 0 1.12.51 1.12 1.12s-.51 1.12-1.12 1.12s-1.12-.51-1.12-1.12s.5-1.12 1.12-1.12zm0 5.37c-.93 0-1.74-.46-2.24-1.17c.05-.72 1.51-1.08 2.24-1.08s2.19.36 2.24 1.08c-.5.71-1.31 1.17-2.24 1.17z" opacity=".3"/><circle cx="17" cy="15.5" r="1.12" fill="currentColor"/><path fill="currentColor" d="M18 11.09V6.27L10.5 3L3 6.27v4.91c0 4.54 3.2 8.79 7.5 9.82c.55-.13 1.08-.32 1.6-.55A5.973 5.973 0 0 0 17 23c3.31 0 6-2.69 6-6c0-2.97-2.16-5.43-5-5.91zM11 17c0 .56.08 1.11.23 1.62c-.24.11-.48.22-.73.3c-3.17-1-5.5-4.24-5.5-7.74v-3.6l5.5-2.4l5.5 2.4v3.51c-2.84.48-5 2.94-5 5.91zm6 4c-2.21 0-4-1.79-4-4s1.79-4 4-4s4 1.79 4 4s-1.79 4-4 4z"/><path fill="currentColor" d="M17 17.5c-.73 0-2.19.36-2.24 1.08c.5.71 1.32 1.17 2.24 1.17s1.74-.46 2.24-1.17c-.05-.72-1.51-1.08-2.24-1.08z"/></svg>
+                    </div>
+                    <h5 class=" group-hover:text-blue-600 dark:group-hover:text-blue-500 text-2xl font-semibold text-center text-zinc-900 dark:text-slate-100">{{$admin_count}}</h5>
+                    <p class="text-center text-gray-500 dark:text-muted">Total Admins</p>
+                </a>
 
-            <div class="bg-amber-500 text-white rounded-full p-4 my-3 w-fit mx-auto ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm3.61 6.34c1.07 0 1.93.86 1.93 1.93s-.86 1.93-1.93 1.93s-1.93-.86-1.93-1.93c-.01-1.07.86-1.93 1.93-1.93zm-6-1.58c1.3 0 2.36 1.06 2.36 2.36s-1.06 2.36-2.36 2.36s-2.36-1.06-2.36-2.36c0-1.31 1.05-2.36 2.36-2.36zm0 9.13v3.75c-2.4-.75-4.3-2.6-5.14-4.96c1.05-1.12 3.67-1.69 5.14-1.69c.53 0 1.2.08 1.9.22c-1.64.87-1.9 2.02-1.9 2.68zM12 20c-.27 0-.53-.01-.79-.04v-4.07c0-1.42 2.94-2.13 4.4-2.13c1.07 0 2.92.39 3.84 1.15C18.28 17.88 15.39 20 12 20z"/></svg>
             </div>
-            <h5 class="text-2xl font-semibold text-center text-zinc-900 dark:text-slate-100">{{$user_count}}</h5>
-            <p class="text-center text-gray-500 dark:text-muted">Total Users</p>
-        </div>
-        <div class="p-3 justify-center animate__animated animate__bounceIn hover:bg-slate-100 dark:hover:bg-zinc-700 duration-150 rounded bg-white dark:bg-zinc-800">
+            <div class="group p-3 justify-center animate__animated animate__bounceIn hover:bg-slate-100 dark:hover:bg-zinc-700 duration-150 rounded bg-white dark:bg-zinc-800">
+                <a href="{{ route('accounts.user.list') }}">
 
-            <div class="bg-emerald-500 text-white rounded-full p-4 my-3 w-fit mx-auto ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M11 11V3H5c-1.1 0-2 .9-2 2v6h8zm2 0h8V5c0-1.1-.9-2-2-2h-6v8zm-2 2H3v6c0 1.1.9 2 2 2h6v-8zm2 0v8h6c1.1 0 2-.9 2-2v-6h-8z"/></svg>
-            </div>
-            <h5 class="text-2xl font-semibold text-center text-zinc-900 dark:text-slate-100">{{$category_count}}</h5>
-            <p class="text-center text-gray-500 dark:text-muted">Total Categories</p>
-        </div>
-        <div class="p-3 justify-center animate__animated animate__bounceIn hover:bg-slate-100 dark:hover:bg-zinc-700 duration-150 rounded bg-white dark:bg-zinc-800">
+                    <div class="bg-amber-500 text-white rounded-full p-4 my-3 w-fit mx-auto ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm3.61 6.34c1.07 0 1.93.86 1.93 1.93s-.86 1.93-1.93 1.93s-1.93-.86-1.93-1.93c-.01-1.07.86-1.93 1.93-1.93zm-6-1.58c1.3 0 2.36 1.06 2.36 2.36s-1.06 2.36-2.36 2.36s-2.36-1.06-2.36-2.36c0-1.31 1.05-2.36 2.36-2.36zm0 9.13v3.75c-2.4-.75-4.3-2.6-5.14-4.96c1.05-1.12 3.67-1.69 5.14-1.69c.53 0 1.2.08 1.9.22c-1.64.87-1.9 2.02-1.9 2.68zM12 20c-.27 0-.53-.01-.79-.04v-4.07c0-1.42 2.94-2.13 4.4-2.13c1.07 0 2.92.39 3.84 1.15C18.28 17.88 15.39 20 12 20z"/></svg>
+                    </div>
+                    <h5 class=" group-hover:text-blue-600 dark:group-hover:text-blue-500 text-2xl font-semibold text-center text-zinc-900 dark:text-slate-100">{{$user_count}}</h5>
+                    <p class="text-center text-gray-500 dark:text-muted">Total Users</p>
+                </a>
 
-            <div class="bg-rose-500 text-white rounded-full p-4 my-3 w-fit mx-auto ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M13 3c3.9 0 7 3.1 7 7c0 2.8-1.6 5.2-4 6.3V21H9v-3H8c-1.1 0-2-.9-2-2v-3H4.5c-.4 0-.7-.5-.4-.8L6 9.7C6.2 5.9 9.2 3 13 3m0-2C8.4 1 4.6 4.4 4.1 8.9L2.5 11c-.6.8-.6 1.8-.2 2.6c.4.7 1 1.2 1.7 1.3V16c0 1.9 1.3 3.4 3 3.9V23h11v-5.5c2.5-1.7 4-4.4 4-7.5c0-5-4-9-9-9m1 13h-2v-1h2v1m1.6-4.5c-.3.4-.6.8-1.1 1.1V12h-3v-1.4c-1.4-.8-1.9-2.7-1.1-4.1s2.7-1.9 4.1-1.1s1.9 2.7 1.1 4.1Z"/></svg>
             </div>
-            <h5 class="text-2xl font-semibold text-center text-zinc-900 dark:text-slate-100">{{ $quiz_count }}</h5>
-            <p class="text-center text-gray-500 dark:text-muted">Total Quizzes</p>
-        </div>
+            <div class="group p-3 justify-center animate__animated animate__bounceIn hover:bg-slate-100 dark:hover:bg-zinc-700 duration-150 rounded bg-white dark:bg-zinc-800">
+                <a href="{{ route('category.list') }}">
+
+                    <div class="bg-emerald-500 text-white rounded-full p-4 my-3 w-fit mx-auto ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M11 11V3H5c-1.1 0-2 .9-2 2v6h8zm2 0h8V5c0-1.1-.9-2-2-2h-6v8zm-2 2H3v6c0 1.1.9 2 2 2h6v-8zm2 0v8h6c1.1 0 2-.9 2-2v-6h-8z"/></svg>
+                    </div>
+                    <h5 class=" group-hover:text-blue-600 dark:group-hover:text-blue-500 text-2xl font-semibold text-center text-zinc-900 dark:text-slate-100">{{$category_count}}</h5>
+                    <p class="text-center text-gray-500 dark:text-muted">Total Categories</p>
+                </a>
+
+                </div>
+            <div class="group p-3 justify-center animate__animated animate__bounceIn hover:bg-slate-100 dark:hover:bg-zinc-700 duration-150 rounded bg-white dark:bg-zinc-800">
+                <a href="{{ route('quiz.list') }}">
+
+                    <div class="bg-rose-500 text-white rounded-full p-4 my-3 w-fit mx-auto ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M13 3c3.9 0 7 3.1 7 7c0 2.8-1.6 5.2-4 6.3V21H9v-3H8c-1.1 0-2-.9-2-2v-3H4.5c-.4 0-.7-.5-.4-.8L6 9.7C6.2 5.9 9.2 3 13 3m0-2C8.4 1 4.6 4.4 4.1 8.9L2.5 11c-.6.8-.6 1.8-.2 2.6c.4.7 1 1.2 1.7 1.3V16c0 1.9 1.3 3.4 3 3.9V23h11v-5.5c2.5-1.7 4-4.4 4-7.5c0-5-4-9-9-9m1 13h-2v-1h2v1m1.6-4.5c-.3.4-.6.8-1.1 1.1V12h-3v-1.4c-1.4-.8-1.9-2.7-1.1-4.1s2.7-1.9 4.1-1.1s1.9 2.7 1.1 4.1Z"/></svg>
+                    </div>
+                    <h5 class=" group-hover:text-blue-600 dark:group-hover:text-blue-500 text-2xl font-semibold text-center text-zinc-900 dark:text-slate-100">{{ $quiz_count }}</h5>
+                    <p class="text-center text-gray-500 dark:text-muted">Total Quizzes</p>
+                </a>
+            </div>
+
      </div>
      <div class="animate__animated animate__bounceIn px-5 py-4 md:mt-6 bg-white dark:bg-zinc-800 rounded">
 
@@ -113,7 +125,7 @@
           </div>
     </div>
     <div class=" bg-white dark:bg-zinc-800  animate__animated animate__bounceIn flex items-center justify-center  rounded ">
-        <div class=" w-full  shadow dark:bg-gray-800 p-4 md:p-6">
+        <div class=" w-full  shadow dark:bg-zinc-800 p-4 md:p-6">
             <div class="flex justify-between items-start w-full">
                 <div class="flex-col items-center">
                   <div class="flex items-center mb-1">

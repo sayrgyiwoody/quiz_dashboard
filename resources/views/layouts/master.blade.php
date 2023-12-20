@@ -127,7 +127,7 @@
  </aside>
 
  <div class="relative p-2 min-h-screen bg-gray-100 dark:bg-zinc-900 sm:ml-64">
-    <div class="md:p-4 rounded-lg ">
+    <div class="md:p-4 py-4 px-1 overflow-x-scroll md:overflow-x-auto rounded-lg ">
         @yield('main-content')
     </div>
  </div>

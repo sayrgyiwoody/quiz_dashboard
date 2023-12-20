@@ -3,7 +3,7 @@
 @section('main-content')
 <h4 class="text-zinc-900 dark:text-white text-xl font-semibold text-center mb-3">Quiz List Table</h4>
 
-<div class=" w-full shadow-md sm:rounded-lg">
+<div class=" w-fit md:w-full shadow-md sm:rounded-lg">
     <div class=" flex flex-col md:flex-row md:items-center  justify-center md:justify-between py-4 px-6 bg-white dark:bg-zinc-800">
         <div class="flex">
             <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction" class="inline-flex items-center text-zinc-500 bg-white border border-zinc-300 focus:outline-none hover:bg-zinc-100 focus:ring-4 focus:ring-zinc-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-600 dark:hover:bg-zinc-700 dark:hover:border-zinc-600 dark:focus:ring-zinc-700" type="button">
