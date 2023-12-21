@@ -124,7 +124,7 @@
                 </td>
                 <td class="px-6 py-4">
                     @if ($admin->address)
-                    {{$admin->address}}
+                    {{Str::limit($admin->address, 100, '....')}}
                     @else
                     not set
                     @endif

@@ -66,7 +66,7 @@
                             Category Name
                         </th>
                         <th scope="col" class="px-6 py-3 text-center">
-                            Total Play
+                            Total Played
                         </th>
 
 
@@ -296,14 +296,14 @@
           yaxis: {
             labels: {
               formatter: function (value) {
-                return (value/totalCounts)*100 + "%"
+                return ((value/totalCounts)*100).toFixed(2) + "%"
               },
             },
           },
           xaxis: {
             labels: {
               formatter: function (value) {
-                return (value/totalCounts)*100  + "%"
+                return ((value/totalCounts)*100).toFixed(2) + "%"
               },
             },
             axisTicks: {

@@ -29,7 +29,7 @@ class UserAccountController extends Controller
     //get profile info
     public function updateProfileInfo(Request $request){
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:3|max:10',
+            'name' => 'required|min:3|max:20',
             'email' => [
                 'required',
                 'string',
