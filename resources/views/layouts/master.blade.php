@@ -38,9 +38,18 @@
                 background-color: #2563eb;
             }
 
+            a.active:hover {
+                background-color: #2563eb;
+            }
+
             a.active svg {
                 color: #fff;
             }
+
+            a.active:hover svg {
+                color: #fff !important;
+            }
+
             a.active span {
                 color: #fff;
             }

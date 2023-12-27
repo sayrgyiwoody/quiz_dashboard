@@ -26,15 +26,15 @@
 
                 <div class="flex items-center space-x-3 mt-5 ms-3 mb-3 md:mb-0">
                     <div class="flex items-center">
-                        <input @if($user->gender==='male') checked @endif id="default-radio-1" type="radio" value="male" name="gender" class=" cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <input disabled @if($user->gender==='male') checked @endif id="default-radio-1" type="radio" value="male" name="gender" class=" cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer ">Male</label>
                     </div>
                     <div class="flex items-center">
-                        <input  @if($user->gender==='female') checked @endif id="default-radio-2" type="radio" value="female" name="gender" class=" cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <input disabled  @if($user->gender==='female') checked @endif id="default-radio-2" type="radio" value="female" name="gender" class=" cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer ">Female</label>
                     </div>
                     <div class="flex items-center">
-                        <input  @if($user->gender==='other') checked @endif id="default-radio-3" type="radio" value="other" name="gender" class=" cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <input disabled  @if($user->gender==='other') checked @endif id="default-radio-3" type="radio" value="other" name="gender" class=" cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="default-radio-3" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer ">Other</label>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
 
                 </div>
                 <div class="relative z-0 w-full mb-4 group mt-6">
-                    <textarea readonly name="address"  cols="30" rows="8" class="@error('email') border-red-600 dark:border-red-600 @else border-slate-300 dark:border-zinc-700 @enderror dark:text-white relative block py-2.5 px-3 w-full text-sm text-gray-900 bg-transparent appearance-none border-[1.5px] rounded-md dark:focus:border-blue-500 -z-0 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required>{{old('address',$user->address)}}</textarea>
+                    <textarea readonly name="address"  cols="30" rows="8" class="@error('email') border-red-600 dark:border-red-600 @else border-slate-300 dark:border-zinc-700 @enderror read-only:-z-20 dark:text-white relative block py-2.5 px-3 w-full text-sm text-gray-900 bg-transparent appearance-none border-[1.5px] rounded-md dark:focus:border-blue-500 -z-0 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required>{{old('address',$user->address)}}</textarea>
                     <label class="bg-white dark:bg-zinc-800 peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 left-3 -z-10 text-zinc-900 peer-focus:z-10 origin-[0]  peer-focus:bg-white dark:peer-focus:bg-zinc-800 px-3 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">Address</label>
 
                 </div>

@@ -19,7 +19,7 @@ class UserAccountController extends Controller
 {
     //get profile info
     public function getProfileInfo(){
-        $user = User::select('name','email','gender','birthday','address','profile_photo_path','provider_avatar')
+        $user = User::select('id','name','email','gender','birthday','address','profile_photo_path','provider_avatar','provider')
         ->where('id',Auth::user()->id)->first();
 
         return response()->json(['status'=>true,'user'=>$user], 200);
@@ -71,7 +71,6 @@ class UserAccountController extends Controller
             $data['profile_photo_path'] = $imageName;
             $request->file('image')->storeAs('public/',$imageName);
         }
-
         User::where('id',Auth::user()->id)->update($data);
         $user = User::where('id',Auth::user()->id)->get();
         return response()->json(['userInfo'=>$user ,'status' => 'success','message' => 'Your personal information is updated successfully'], 200);
@@ -84,14 +83,26 @@ class UserAccountController extends Controller
 
     //get account data as object format
     private function getAccountData($request) {
-        return [
-            'name' => $request->name,
-            'email' => $request->email,
-            'updated_at' => Carbon::now(),
-            'gender' => $request->gender,
-            'birthday' => $request->birthday,
-            'address' => $request->address,
-        ];
+        $user = User::where('id',$request->id)->first();
+        if($user->provider_id){ //if socialite user can't update email
+            return [
+                'name' => $request->name,
+                'updated_at' => Carbon::now(),
+                'gender' => $request->gender,
+                'birthday' => $request->birthday,
+                'address' => $request->address,
+            ];
+
+        }else {
+            return [
+                'name' => $request->name,
+                'email' => $request->email,
+                'updated_at' => Carbon::now(),
+                'gender' => $request->gender,
+                'birthday' => $request->birthday,
+                'address' => $request->address,
+            ];
+        }
     }
 
     // check if old password exist
