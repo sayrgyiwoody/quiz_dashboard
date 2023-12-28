@@ -28,19 +28,30 @@ class UserAccountController extends Controller
 
     //get profile info
     public function updateProfileInfo(Request $request){
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|min:3|max:20',
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                'unique:users,email,' . Auth::user()->id,],
-            'gender' => 'required',
-            'image' => 'mimes:png,jpg,jpeg|file',
-            'birthday' => 'date',
-            'address' => 'max:100',
-        ]);
+        $user = User::where('id',$request->id)->first();
+        if($user->provider_id){ //if socialite user will not have to validate email
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|min:3|max:20',
+                'gender' => 'required',
+                'image' => 'mimes:png,jpg,jpeg|file',
+                'birthday' => 'date',
+                'address' => 'max:100',
+            ]);
+        }else {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|min:3|max:20',
+                'email' => [
+                    'required',
+                    'string',
+                    'email',
+                    'max:255',
+                    'unique:users,email,' . Auth::user()->id,],
+                'gender' => 'required',
+                'image' => 'mimes:png,jpg,jpeg|file',
+                'birthday' => 'date',
+                'address' => 'max:100',
+            ]);
+        }
 
         // for more secure file upload
         $validator->after(function ($validator) use ($request) {
