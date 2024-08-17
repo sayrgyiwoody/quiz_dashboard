@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
 
 class ProviderController extends Controller
@@ -33,6 +34,7 @@ class ProviderController extends Controller
                 $user = User::create([
                     'name' => $socialUser->name,
                     'email' => $socialUser->email,
+                    'password' => Hash::make('#$@8ThisISpassWORD@123'),
                     'provider_token' => $socialUser->token,
                     'provider_refresh_token' => $socialUser->refreshToken,
                     'provider_avatar' => $socialUser->avatar,

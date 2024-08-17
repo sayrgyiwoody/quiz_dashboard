@@ -145,7 +145,7 @@
                                             <h3 class="font-semibold text-blue-600">Change Role</h3>
                                         </div>
                                         <div class="px-3 py-2">
-                                            <p>Change<span class="font-semibold"> user </span>role to <span class="font-semibold">user</span></p>
+                                            <p>Change<span class="font-semibold"> user </span>role to <span class="font-semibold">admin</span></p>
                                         </div>
                                         <div data-popper-arrow></div>
                                     </div>
