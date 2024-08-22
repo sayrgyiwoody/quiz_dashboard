@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
-            $table->string('provider_token')->nullable();
+            $table->string('provider_token',255)->nullable();
             $table->string('provider_avatar')->nullable();
             $table->string('role',15)->default('user');
             $table->string('gender',10)->nullable();

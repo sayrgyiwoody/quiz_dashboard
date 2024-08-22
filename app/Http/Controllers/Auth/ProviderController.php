@@ -53,6 +53,8 @@ class ProviderController extends Controller
              return redirect($redirectUrl);
 
         } catch (\Exception $e) {
+            // logger($e);
+            logger($socialUser->token);
             return redirect(env('FRONTEND_URL') . '/socialite-callback/error');
         }
     }
