@@ -280,7 +280,7 @@
                                                     class="relative w-full max-w-2xl max-h-full flex justify-center items-center">
                                                     <!-- Modal content -->
                                                     <div
-                                                        class="relative w-full md:w-2/3 bg-white rounded-lg shadow dark:bg-zinc-700">
+                                                        class="animate__animated animate__bounceIn relative w-full md:w-2/3 bg-white rounded-lg shadow dark:bg-zinc-700">
                                                         <!-- Modal header -->
                                                         <div
                                                             class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">

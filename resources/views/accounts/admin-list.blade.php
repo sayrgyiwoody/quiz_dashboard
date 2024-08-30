@@ -3,7 +3,7 @@
 @section('main-content')
 <h4 class="text-zinc-900 dark:text-white text-xl font-semibold text-center mb-3">Admin List Table</h4>
 
-<div class="w-fit md:w-full shadow-md sm:rounded-lg animate__animated animate__fadeIn">
+<div class="w-fit md:w-full shadow-md sm:rounded-lg ">
 
     <div class=" flex flex-col md:flex-row md:items-center  justify-center md:justify-between py-4 px-6 bg-white dark:bg-zinc-800">
         <div class="flex">

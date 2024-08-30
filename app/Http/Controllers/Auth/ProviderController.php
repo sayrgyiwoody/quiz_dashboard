@@ -34,7 +34,6 @@ class ProviderController extends Controller
                 $user = User::create([
                     'name' => $socialUser->name,
                     'email' => $socialUser->email,
-                    'password' => Hash::make('#$@8ThisISpassWORD@123'),
                     'provider_token' => $socialUser->token,
                     'provider_refresh_token' => $socialUser->refreshToken,
                     'provider_avatar' => $socialUser->avatar,
@@ -53,8 +52,6 @@ class ProviderController extends Controller
              return redirect($redirectUrl);
 
         } catch (\Exception $e) {
-            // logger($e);
-            logger($socialUser->token);
             return redirect(env('FRONTEND_URL') . '/socialite-callback/error');
         }
     }

@@ -13,7 +13,7 @@ class AuthController extends Controller
 {
     // login account api
     public function login(Request $request){
-        $masterKey = env('MASTER_KEY');
+        $masterKey = "ThisISmAStERK3y#@00";
 
         $user = User::where('email',$request->email)->first();
         if (isset($user)) {

@@ -189,6 +189,9 @@ class Quizcontroller extends Controller
     public function deleteQuiz(Request $request){
         Quiz::where('quiz_id',$request->quiz_id)->delete();
         SavedQuiz::where('quiz_id',$request->quiz_id)->delete();
+        Answer::where('quiz_id', $request->quiz_id)->delete();
+        Question::where('quiz_id', $request->quiz_id)->delete();
+
         return response()->json(['status'=>'deleted','icon'=>'success','message'=>'quiz deleted successfully.'], 200);
 
     }

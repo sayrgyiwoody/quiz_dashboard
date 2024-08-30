@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
+use App\Models\Answer;
+use App\Models\Question;
+use App\Models\SavedQuiz;
 use Illuminate\Http\Request;
 use App\Models\PlayedHistory;
 use App\Http\Controllers\Controller;
@@ -37,6 +40,9 @@ class QuizController extends Controller
 
     public function delete(Request $request) {
         Quiz::where('quiz_id',$request->id)->delete();
+        SavedQuiz::where('quiz_id', $request->id)->delete();
+        Answer::where('quiz_id', $request->id)->delete();
+        Question::where('quiz_id', $request->id)->delete();
         return back()->with(['alert'=>'Category deleted successfully.']);
     }
 
